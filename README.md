@@ -1,6 +1,6 @@
 # Ordly
 
-Ordly's frontend, built with [Angular](https://angular.dev) (standalone components, CSS, routing).
+Ordly's frontend, built with [Angular](https://angular.dev) (standalone components, CSS, routing) and [Bootstrap](https://getbootstrap.com).
 
 > This repository currently contains the base Angular project only. UI work (components, pages, layout, routes) and backend/API integration are out of scope for now.
 
@@ -36,6 +36,12 @@ The build artifacts are written to `dist/`.
 ```bash
 npm test
 ```
+
+## Bootstrap and imports
+
+- Bootstrap's CSS and JS bundle are registered globally in `angular.json`, so its classes and `data-bs-*` components can be used directly in templates.
+- `src/` is the base directory for imports: use `app/components/...` instead of relative paths like `../../../`.
+- All application code must live inside `src/`; importing a `.ts` file from outside it fails the build.
 
 ## Project structure
 
