@@ -1,16 +1,5 @@
 import { Component, computed, input, output } from '@angular/core';
 
-/**
- * Insignia de usuario (#14).
- *  - Con sesión iniciada: avatar con iniciales, nombre y "Ver perfil".
- *  - Con sesión cerrada: botón "Iniciar sesión".
- *  - Colapsado: solo se muestra el avatar (o el icono de login si no hay sesión).
- *
- * Uso:
- *   <app-user-badge name="María Paz" (profileClick)="..." />
- *   <app-user-badge name="María Paz" [collapsed]="true" />
- *   <app-user-badge [loggedIn]="false" (loginClick)="..." />
- */
 @Component({
   selector: 'app-user-badge',
   template: `
@@ -62,9 +51,7 @@ import { Component, computed, input, output } from '@angular/core';
 })
 export class UserBadge {
   name = input('');
-  /** false = sesión cerrada. */
   loggedIn = input(true);
-  /** true = barra lateral colapsada: solo el avatar. */
   collapsed = input(false);
 
   profileClick = output<void>();
