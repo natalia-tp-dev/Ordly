@@ -1,0 +1,64 @@
+.attachment-wrapper {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.attachment-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background-color: var(--surface-base, #ffffff);
+  color: var(--text-primary, #1E293B);
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.attachment-btn:hover {
+  background-color: #F8FAFC;
+}
+
+.file-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px 6px 12px;
+  background-color: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  max-width: 280px;
+}
+
+.file-chip .file-icon {
+  color: #3B82F6;
+  font-size: 16px;
+}
+
+.file-chip .file-name {
+  font-size: 13px;
+  color: var(--text-primary, #1E293B);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-chip .remove-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border-radius: 50%;
+  color: #64748B;
+}
+
+.file-chip .remove-btn:hover {
+  background-color: #E2E8F0;
+  color: #EF4444;
+}
