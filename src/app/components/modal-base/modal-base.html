@@ -1,0 +1,16 @@
+<div class="modal-scrim" *ngIf="isOpen" (click)="closeModal()">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    
+    <header class="modal-header">
+      <h2 class="modal-title">{{ title }}</h2>
+      <button class="close-button" (click)="closeModal()" aria-label="Cerrar">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </header>
+
+    <div class="modal-content-area">
+      <ng-content></ng-content>
+    </div>
+
+  </div>
+</div>
