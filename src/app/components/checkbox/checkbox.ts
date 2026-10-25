@@ -1,14 +1,5 @@
 import { Component, input, model } from '@angular/core';
 
-/**
- * Casilla de verificación (#13).
- * Estados: marcada / no marcada (+ deshabilitada).
- * Accesibilidad: siempre tiene una etiqueta (aria-label o texto visible).
- *
- * Uso:
- *   <app-checkbox [(checked)]="hecho" label="Marcar tarea como completada" />
- *   <app-checkbox [(checked)]="acepto" label="Acepto los términos" [showLabel]="true" />
- */
 @Component({
   selector: 'app-checkbox',
   template: `
@@ -30,10 +21,8 @@ import { Component, input, model } from '@angular/core';
   `,
 })
 export class Checkbox {
-  /** Estado marcado. Se usa con [(checked)]. */
   checked = model(false);
   disabled = input(false);
-  /** Texto accesible (y visible si showLabel = true). */
   label = input.required<string>();
   showLabel = input(false);
 
