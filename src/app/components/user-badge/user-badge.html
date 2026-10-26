@@ -1,0 +1,36 @@
+@if (loggedIn()) {
+  <div class="badge">
+    <button
+      type="button"
+      class="badge__avatar"
+      [attr.aria-label]="'Ver perfil de ' + name()"
+      (click)="profileClick.emit()"
+    >
+      {{ initials() }}
+    </button>
+
+    @if (!collapsed()) {
+      <div class="badge__info">
+        <p class="badge__name">{{ name() }}</p>
+        <button type="button" class="badge__link" (click)="profileClick.emit()">Ver perfil</button>
+      </div>
+    }
+  </div>
+} @else {
+  @if (collapsed()) {
+    <button
+      type="button"
+      class="badge__avatar badge__avatar--login"
+      aria-label="Iniciar sesión"
+      (click)="loginClick.emit()"
+    >
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+        <polyline points="10 17 15 12 10 7" />
+        <line x1="15" y1="12" x2="3" y2="12" />
+      </svg>
+    </button>
+  } @else {
+    <button type="button" class="badge__login" (click)="loginClick.emit()">Iniciar sesión</button>
+  }
+}
