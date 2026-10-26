@@ -1,8 +1,6 @@
-<app-modal-base [isOpen]="true" title="Modal de Prueba">
-  <p>
-    VERIFICACION DE QUE TODO FUNCIONE CORRECTMENTE 
-    T1
-    verificacion de que todo funcione correctamente
-  </p>
+<app-modal-base [isOpen]="isModalOpen" title="Mi Modal" (close)="isModalOpen = false">
+  <p>VERIFICACION DE QUE TODO FUNCIONE CORRECTAMENTE</p>
 </app-modal-base>
+
+<button (click)="isModalOpen = true">Abrir Modal</button>
 <router-outlet></router-outlet>
