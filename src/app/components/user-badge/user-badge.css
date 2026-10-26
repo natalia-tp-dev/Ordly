@@ -1,0 +1,82 @@
+:host {
+  display: block;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3, 0.75rem);
+}
+
+.badge__avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--color-primary, #3b82f6);
+  color: var(--color-on-primary, #ffffff);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.badge__avatar:hover {
+  background: var(--color-primary-hover, #2563eb);
+}
+
+.badge__info {
+  min-width: 0;
+}
+
+.badge__name {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text, #1e293b);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.badge__link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-primary, #3b82f6);
+  cursor: pointer;
+}
+
+.badge__link:hover {
+  color: var(--color-primary-hover, #2563eb);
+}
+
+.badge__login {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  border: 0;
+  border-radius: var(--radius-md, 0.75rem);
+  background: var(--color-primary, #3b82f6);
+  color: var(--color-on-primary, #ffffff);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.badge__login:hover {
+  background: var(--color-primary-hover, #2563eb);
+}
+
+.badge__avatar:focus-visible,
+.badge__link:focus-visible,
+.badge__login:focus-visible {
+  outline: 2px solid var(--color-primary, #3b82f6);
+  outline-offset: 2px;
+}
