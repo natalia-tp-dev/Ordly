@@ -1,0 +1,17 @@
+<div class="attachment-wrapper">
+  <!-- Botón para adjuntar archivo con el color corporativo -->
+  <label class="btn d-inline-flex align-items-center gap-2 text-white shadow-sm" style="background-color: var(--brand-primary, #3B82F6); border-color: var(--brand-primary, #3B82F6);" *ngIf="!selectedFile">
+    <i class="bi bi-paperclip"></i>
+    <span>Adjuntar archivo</span>
+    <input type="file" (change)="onFileChange($event)" hidden>
+  </label>
+
+  <!-- Vista previa del archivo seleccionado con la X y el icono de documento -->
+  <div class="d-inline-flex align-items-center gap-2 px-3 py-2 bg-light border rounded-2" *ngIf="selectedFile">
+    <i class="bi bi-file-earmark-text text-primary"></i>
+    <span class="text-truncate" style="max-width: 200px; font-size: 14px;" title="{{ selectedFile.name }}">
+      {{ selectedFile.name }}
+    </span>
+    <button type="button" class="btn-close" aria-label="Remover archivo" (click)="removeFile()" style="font-size: 10px;"></button>
+  </div>
+</div>

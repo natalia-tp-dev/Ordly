@@ -4,7 +4,7 @@ import { ModalBaseComponent } from './components/modal-base/modal-base';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ModalBaseComponent, ],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
