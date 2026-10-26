@@ -1,0 +1,40 @@
+/*
+ * Los colores salen de los tokens de diseño (variables CSS).
+ * El segundo valor de cada var(...) es solo un respaldo por si el token aún no existe:
+ * cuando conozcamos los nombres reales de los tokens del proyecto, se reemplazan aquí.
+ */
+:host {
+  display: inline-block;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkbox__input {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  border-radius: var(--radius-sm, 0.25rem);
+  accent-color: var(--color-primary, #3b82f6);
+  cursor: inherit;
+}
+
+.checkbox__input:focus-visible {
+  outline: 2px solid var(--color-primary, #3b82f6);
+  outline-offset: 2px;
+}
+
+.checkbox__label {
+  font-size: 0.875rem;
+  color: var(--color-text, #334155);
+}
