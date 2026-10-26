@@ -23,6 +23,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "tabler-sprite-nostroke.svg",
+                "input": "node_modules/@tabler/icons-sprite/dist",
+                "output": "icons"
               }
             ],
             "styles": [
