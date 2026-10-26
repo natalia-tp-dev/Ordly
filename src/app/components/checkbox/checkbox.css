@@ -1,8 +1,3 @@
-/*
- * Los colores salen de los tokens de diseño (variables CSS).
- * El segundo valor de cada var(...) es solo un respaldo por si el token aún no existe:
- * cuando conozcamos los nombres reales de los tokens del proyecto, se reemplazan aquí.
- */
 :host {
   display: inline-block;
 }
