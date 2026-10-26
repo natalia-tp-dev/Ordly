@@ -1,0 +1,51 @@
+:host {
+  display: inline-block;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 0.5px solid transparent;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--brand-primary, #3b82f6);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button--primary {
+  background-color: var(--brand-primary, #3b82f6);
+  color: var(--text-onbrand, #ffffff);
+}
+
+.button--secondary {
+  background-color: var(--surface-base, #ffffff);
+  border-color: var(--border-default, #e2e8f0);
+  color: var(--text-primary, #1e293b);
+}
+
+.button--text {
+  background-color: transparent;
+  color: var(--text-secondary, #64748b);
+}
+
+.button--icon-only {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+}
