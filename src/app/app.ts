@@ -4,10 +4,11 @@ import { ModalBaseComponent } from './components/modal-base/modal-base';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ModalBaseComponent],
+  imports: [RouterOutlet, ModalBaseComponent, ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('ordly');
+  isModalOpen = false;
 }
