@@ -1,0 +1,16 @@
+<section class="insight-card">
+  <header class="insight-card__header">
+    <h2 class="insight-card__title">{{ title() }}</h2>
+    <span class="insight-card__tag">IA</span>
+  </header>
+
+  <p class="insight-card__message">{{ message() }}</p>
+
+  <div class="insight-card__actions">
+    <app-button variant="primary" (click)="primaryClick.emit()">{{ primaryLabel() }}</app-button>
+    @if (secondaryLabel()) {
+      <app-button variant="secondary" (click)="secondaryClick.emit()">{{ secondaryLabel() }}</app-button>
+    }
+    <app-button variant="text" (click)="dismissClick.emit()">{{ dismissLabel() }}</app-button>
+  </div>
+</section>
