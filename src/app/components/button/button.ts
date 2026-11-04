@@ -12,5 +12,4 @@ export class Button {
   type = input<'button' | 'submit' | 'reset'>('button');
   disabled = input(false);
   iconOnly = input(false);
-  ariaLabel = input<string>();
 }
