@@ -1,0 +1,15 @@
+<a
+  class="nav-item"
+  [class.nav-item--collapsed]="collapsed()"
+  [routerLink]="link()"
+  routerLinkActive="nav-item--active"
+  [routerLinkActiveOptions]="{ exact: exact() }"
+>
+  <app-icon [name]="icon()" color="currentColor" />
+  @if (!collapsed()) {
+    <span class="nav-item__label">{{ label() }}</span>
+    @if (badge() !== undefined) {
+      <span class="nav-item__badge">{{ badge() }}</span>
+    }
+  }
+</a>
