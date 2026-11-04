@@ -1,0 +1,44 @@
+:host {
+  display: inline-block;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo__mark {
+  position: relative;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.logo__square {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 5px;
+}
+
+.logo__square--back {
+  top: 1px;
+  left: 1px;
+  background-color: var(--brand-primary-soft, #bfdbfe);
+}
+
+.logo__square--front {
+  top: 8px;
+  left: 8px;
+  background-color: var(--brand-primary, #3b82f6);
+}
+
+.logo__name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 24px;
+  color: var(--text-primary, #1e293b);
+  white-space: nowrap;
+}
