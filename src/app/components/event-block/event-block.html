@@ -1,0 +1,11 @@
+
+<div
+  class="event-block"
+  [class.event-block--work]="category() === 'work'"
+  [class.event-block--personal]="category() === 'personal'"
+  [class.event-block--meeting]="category() === 'meeting'"
+  [class.event-block--other]="category() === 'other'"
+>
+  <span class="event-block__title">{{ title() }}</span>
+  <span class="event-block__time">{{ time() }}</span>
+</div>
