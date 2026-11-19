@@ -1,0 +1,57 @@
+
+:host {
+  display: block;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+.event-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  border-left: 3px solid transparent;
+  border-radius: 6px;
+  min-width: 0;
+}
+
+.event-block__title {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 15px;
+  overflow-wrap: anywhere;
+}
+
+.event-block__time {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+/* Trabajo */
+.event-block--work {
+  background-color: var(--surface-active, #EFF6FF);
+  border-left-color: var(--brand-primary, #3B82F6);
+  color: var(--brand-primary, #3B82F6);
+}
+
+/* Personal */
+.event-block--personal {
+  background-color: var(--surface-badge, #F1F5F9);
+  border-left-color: var(--accent-purple, #8B5CF6);
+  color: var(--accent-purple, #8B5CF6);
+}
+
+/* Reunión */
+.event-block--meeting {
+  background-color: var(--surface-warning, #FFFBEB);
+  border-left-color: var(--state-warning, #F59E0B);
+  color: var(--state-warning, #F59E0B);
+}
+
+/* Otros */
+.event-block--other {
+  background-color: var(--surface-muted, #F8F9FA);
+  border-left-color: var(--text-secondary, #64748B);
+  color: var(--text-secondary, #64748B);
+}
