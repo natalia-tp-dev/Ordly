@@ -1,0 +1,69 @@
+
+<div class="agenda-toolbar">
+
+  <!-- Navegación de fechas -->
+  <div class="agenda-toolbar__navigation">
+
+    <app-button
+      variant="secondary"
+      [iconOnly]="true"
+      aria-label="Periodo anterior"
+      (click)="previous()"
+    >
+      <app-icon name="chevron-left" [size]="18" />
+    </app-button>
+
+    <app-button
+      variant="secondary"
+      [iconOnly]="true"
+      aria-label="Periodo siguiente"
+      (click)="next()"
+    >
+      <app-icon name="chevron-right" [size]="18" />
+    </app-button>
+
+    <app-button
+      variant="secondary"
+      (click)="goToToday()"
+    >
+      Today
+    </app-button>
+
+  </div>
+
+  <!-- Selector de vista -->
+  <div class="agenda-toolbar__views" role="group" aria-label="Vista de agenda">
+
+    <app-button
+      [variant]="view() === 'month' ? 'secondary' : 'text'"
+      (click)="setView('month')"
+      [attr.aria-pressed]="view() === 'month'"
+    >
+      Month
+    </app-button>
+
+    <app-button
+      [variant]="view() === 'week' ? 'secondary' : 'text'"
+      (click)="setView('week')"
+      [attr.aria-pressed]="view() === 'week'"
+    >
+      Week
+    </app-button>
+
+    <app-button
+      [variant]="view() === 'day' ? 'secondary' : 'text'"
+      (click)="setView('day')"
+      [attr.aria-pressed]="view() === 'day'"
+    >
+      Day
+    </app-button>
+
+  </div>
+
+  <!-- Rango de fechas -->
+  <div class="agenda-toolbar__date" aria-live="polite">
+    {{ dateRangeLabel() }}
+  </div>
+
+</div>
+
