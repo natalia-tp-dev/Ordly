@@ -1,1 +1,71 @@
-<p>form-field works!</p>
+
+<div class="form-field">
+  @if (label()) {
+    <label class="form-field__label" [for]="fieldId()">
+      {{ label() }}
+      @if (required()) {
+        <span class="form-field__required">*</span>
+      }
+    </label>
+  }
+
+  @switch (type()) {
+    @case ('input') {
+      <input
+        class="form-field__control"
+        [id]="fieldId()"
+        [type]="inputType()"
+        [placeholder]="placeholder()"
+        [value]="value()"
+        [disabled]="disabled()"
+        [required]="required()"
+        [attr.aria-invalid]="!!errorText()"
+        [attr.aria-describedby]="errorText() ? fieldId() + '-message' : (helpText() ? fieldId() + '-message' : null)"
+        (input)="value.set($any($event.target).value)"
+      />
+    }
+
+    @case ('select') {
+      <select
+        class="form-field__control"
+        [id]="fieldId()"
+        [value]="value()"
+        [disabled]="disabled()"
+        [required]="required()"
+        [attr.aria-invalid]="!!errorText()"
+        [attr.aria-describedby]="errorText() ? fieldId() + '-message' : (helpText() ? fieldId() + '-message' : null)"
+        (change)="value.set($any($event.target).value)"
+      >
+        <option value="" disabled>{{ placeholder() }}</option>
+        @for (option of options(); track option.value) {
+          <option [value]="option.value">{{ option.label }}</option>
+        }
+      </select>
+    }
+
+    @case ('textarea') {
+      <textarea
+        class="form-field__control form-field__textarea"
+        [id]="fieldId()"
+        [placeholder]="placeholder()"
+        [value]="value()"
+        [disabled]="disabled()"
+        [required]="required()"
+        [attr.aria-invalid]="!!errorText()"
+        [attr.aria-describedby]="errorText() ? fieldId() + '-message' : (helpText() ? fieldId() + '-message' : null)"
+        (input)="value.set($any($event.target).value)"
+      ></textarea>
+    }
+  }
+
+  @if (errorText() || helpText()) {
+    <span
+      class="form-field__message"
+      [class.form-field__message--error]="!!errorText()"
+      [id]="fieldId() + '-message'"
+      aria-live="polite"
+    >
+      {{ errorText() || helpText() }}
+    </span>
+  }
+</div>

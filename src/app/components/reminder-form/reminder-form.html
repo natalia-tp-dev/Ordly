@@ -1,0 +1,92 @@
+
+<app-modal-base
+  [isOpen]="isOpen()"
+  title="Nuevo recordatorio"
+  (close)="cancel()"
+>
+  <div class="reminder-form">
+
+    <!-- Título -->
+    <app-form-field
+      label="Título"
+      placeholder="Nombre del recordatorio"
+      fieldId="reminder-title"
+      [value]="title()"
+      (valueChange)="title.set($event)"
+      [required]="true"
+    />
+
+    <!-- Fecha y hora -->
+    <div class="reminder-form__row">
+      <app-form-field
+        label="Fecha"
+        placeholder="DD/MM/AAAA"
+        fieldId="reminder-date"
+        [value]="date()"
+        (valueChange)="date.set($event)"
+        [required]="true"
+      />
+
+      <app-form-field
+        label="Hora"
+        placeholder="HH:MM"
+        fieldId="reminder-time"
+        [value]="time()"
+        (valueChange)="time.set($event)"
+        [required]="true"
+      />
+    </div>
+
+    <!-- Lugar y categoría -->
+    <div class="reminder-form__row">
+      <app-form-field
+        label="Lugar"
+        placeholder="Agregar lugar"
+        fieldId="reminder-place"
+        [value]="place()"
+        (valueChange)="place.set($event)"
+      />
+
+      <app-form-field
+        type="select"
+        label="Categoría"
+        placeholder="Seleccionar"
+        fieldId="reminder-category"
+        [options]="categories"
+        [value]="category()"
+        (valueChange)="category.set($event)"
+      />
+    </div>
+
+    <!-- Notas -->
+    <app-form-field
+      type="textarea"
+      label="Notas"
+      placeholder="Agrega una descripción o detalles..."
+      fieldId="reminder-notes"
+      [value]="notes()"
+      (valueChange)="notes.set($event)"
+    />
+
+    <!-- Botones -->
+    <div class="reminder-form__actions">
+      <app-button
+        variant="secondary"
+        type="button"
+        (click)="cancel()"
+      >
+        Cancelar
+      </app-button>
+
+      <app-button
+        variant="primary"
+        type="button"
+        (click)="saveReminder()"
+      >
+        Crear recordatorio
+      </app-button>
+    </div>
+
+  </div>
+</app-modal-base>
+
