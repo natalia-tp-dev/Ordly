@@ -1,1 +1,7 @@
-<p>chip works!</p>
+
+<span class="chip" [class.chip--urgent]="variant() === 'urgent'"
+  [class.chip--important]="variant() === 'important'"
+  [class.chip--normal]="variant() === 'normal'"
+  [class.chip--category]="variant() === 'category'">
+  {{ label() }}
+</span>
