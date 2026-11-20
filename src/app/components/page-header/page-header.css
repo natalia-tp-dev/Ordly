@@ -1,0 +1,57 @@
+:host {
+  display: block;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-header--with-date {
+  align-items: flex-start;
+}
+
+.page-header__text {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.page-header__date {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  color: var(--text-tertiary, #94a3b8);
+}
+
+.page-header__title {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 24px;
+  color: var(--text-primary, #1e293b);
+}
+
+.page-header--with-date .page-header__title {
+  font-size: 22px;
+  line-height: 28px;
+}
+
+.page-header__actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-header__actions:empty {
+  display: none;
+}

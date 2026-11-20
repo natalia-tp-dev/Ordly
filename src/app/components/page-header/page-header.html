@@ -1,0 +1,11 @@
+<header class="page-header" [class.page-header--with-date]="formattedDate()">
+  <div class="page-header__text">
+    @if (formattedDate()) {
+      <span class="page-header__date">{{ formattedDate() }}</span>
+    }
+    <h1 class="page-header__title">{{ title() }}</h1>
+  </div>
+  <div class="page-header__actions">
+    <ng-content />
+  </div>
+</header>
