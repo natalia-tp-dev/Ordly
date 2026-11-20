@@ -23,7 +23,6 @@ export class FormField {
   errorText = input('');
 
   inputType = input<'text' | 'email' | 'password' | 'number'>('text');
-
   options = input<FormFieldOption[]>([]);
 
   fieldId = input('form-field');
