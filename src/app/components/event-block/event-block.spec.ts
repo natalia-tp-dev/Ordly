@@ -12,7 +12,9 @@ describe('EventBlock', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(EventBlock);
+        fixture = TestBed.createComponent(EventBlock);
+    fixture.componentRef.setInput('title', 'Reunión');
+    fixture.componentRef.setInput('time', '10:00 AM');
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

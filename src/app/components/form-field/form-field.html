@@ -1,1 +1,61 @@
-<p>form-field works!</p>
+
+<div class="form-field">
+  <label class="form-field__label" [for]="fieldId()">
+    {{ label() }}
+    @if (required()) {
+      <span class="form-field__required">*</span>
+    }
+  </label>
+
+  @if (type() === 'input') {
+    <input
+      class="form-field__control"
+      [id]="fieldId()"
+      [type]="inputType()"
+      [placeholder]="placeholder()"
+      [disabled]="disabled()"
+      [required]="required()"
+      [value]="value()"
+      (input)="value.set($any($event.target).value)"
+      [attr.aria-invalid]="errorText() ? 'true' : 'false'"
+    />
+  }
+
+  @if (type() === 'select') {
+    <select
+      class="form-field__control"
+      [id]="fieldId()"
+      [disabled]="disabled()"
+      [required]="required()"
+      [value]="value()"
+      (change)="value.set($any($event.target).value)"
+      [attr.aria-invalid]="errorText() ? 'true' : 'false'"
+    >
+      <option value="" disabled>{{ placeholder() }}</option>
+      @for (option of options(); track option.value) {
+        <option [value]="option.value">{{ option.label }}</option>
+      }
+    </select>
+  }
+
+  @if (type() === 'textarea') {
+    <textarea
+      class="form-field__control form-field__textarea"
+      [id]="fieldId()"
+      [placeholder]="placeholder()"
+      [disabled]="disabled()"
+      [required]="required()"
+      [value]="value()"
+      (input)="value.set($any($event.target).value)"
+      [attr.aria-invalid]="errorText() ? 'true' : 'false'"
+    ></textarea>
+  }
+
+  @if (errorText()) {
+    <span class="form-field__message form-field__message--error">
+      {{ errorText() }}
+    </span>
+  } @else if (helpText()) {
+    <span class="form-field__message">{{ helpText() }}</span>
+  }
+</div>

@@ -13,6 +13,7 @@ describe('Chip', () => {
     .compileComponents();
 
     fixture = TestBed.createComponent(Chip);
+    fixture.componentRef.setInput('label', 'Urgente');
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

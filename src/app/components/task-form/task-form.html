@@ -1,0 +1,100 @@
+
+<app-modal-base
+  [isOpen]="isOpen()"
+  title="Nueva tarea"
+  (close)="cancel()"
+>
+  <div class="task-form">
+
+    <!-- Título -->
+    <app-form-field
+      label="Título"
+      placeholder="Escribe el nombre de la tarea"
+      fieldId="task-title"
+      [required]="true"
+      [value]="title()"
+      (valueChange)="title.set($event)"
+    />
+
+    <!-- Lista -->
+    <app-form-field
+      type="select"
+      label="Lista"
+      placeholder="Selecciona una lista"
+      fieldId="task-list"
+      [options]="lists"
+      [value]="list()"
+      (valueChange)="list.set($event)"
+    />
+
+    <!-- Fecha -->
+    <app-form-field
+      label="Fecha"
+      inputType="text"
+      placeholder="DD/MM/AAAA"
+      fieldId="task-date"
+      [value]="date()"
+      (valueChange)="date.set($event)"
+    />
+
+    <!-- Prioridad -->
+    <div class="task-form__priority">
+      <span class="task-form__label">Prioridad</span>
+
+      <div class="task-form__priority-options">
+        <button
+          type="button"
+          class="task-form__priority-button"
+          [class.task-form__priority-button--selected]="priority() === 'urgent'"
+          (click)="selectPriority('urgent')"
+        >
+          <app-chip label="Urgente" variant="urgent" />
+        </button>
+
+        <button
+          type="button"
+          class="task-form__priority-button"
+          [class.task-form__priority-button--selected]="priority() === 'important'"
+          (click)="selectPriority('important')"
+        >
+          <app-chip label="Importante" variant="important" />
+        </button>
+
+        <button
+          type="button"
+          class="task-form__priority-button"
+          [class.task-form__priority-button--selected]="priority() === 'normal'"
+          (click)="selectPriority('normal')"
+        >
+          <app-chip label="Normal" variant="normal" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Notas -->
+    <div class="task-form__notes">
+      <label class="task-form__label" for="task-notes">Notas</label>
+
+      <input
+        id="task-notes"
+        class="task-form__notes-input"
+        type="text"
+        placeholder="Detalles adicionales"
+        [value]="notes()"
+        (input)="notes.set($any($event.target).value)"
+      />
+    </div>
+
+    <!-- Botones -->
+    <div class="task-form__actions">
+      <app-button variant="secondary" (click)="cancel()">
+        Cancelar
+      </app-button>
+
+      <app-button variant="primary" (click)="saveTask()">
+        Crear tarea
+      </app-button>
+    </div>
+
+  </div>
+</app-modal-base>
