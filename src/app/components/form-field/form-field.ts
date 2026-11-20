@@ -16,12 +16,15 @@ export interface FormFieldOption {
 })
 export class FormField {
   type = input<FormFieldType>('input');
+
   label = input('');
   placeholder = input('Escribe aquí...');
   helpText = input('');
   errorText = input('');
+
   inputType = input<'text' | 'email' | 'password' | 'number'>('text');
   options = input<FormFieldOption[]>([]);
+
   fieldId = input('form-field');
   disabled = input(false);
   required = input(false);
