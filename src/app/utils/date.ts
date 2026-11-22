@@ -34,6 +34,17 @@ export function relativeDayLabel(date: Date, now = new Date()): string {
   return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' }).replace('.', '');
 }
 
+export function dueLabel(date: Date, now = new Date()): string {
+  const day = relativeDayLabel(date, now);
+  const label = day.charAt(0).toUpperCase() + day.slice(1);
+  if (date.getHours() === 0 && date.getMinutes() === 0) {
+    return label;
+  }
+  const hour = date.getHours() % 12 === 0 ? 12 : date.getHours() % 12;
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  return `${label} · ${hour}:${minutes} ${date.getHours() < 12 ? 'a.m.' : 'p.m.'}`;
+}
+
 export function startOfWeek(date: Date): Date {
   const result = new Date(date.getFullYear(), date.getMonth(), date.getDate());
   const day = result.getDay();

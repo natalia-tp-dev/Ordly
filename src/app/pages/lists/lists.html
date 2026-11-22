@@ -1,0 +1,11 @@
+<div class="lists">
+  <app-page-header title="Listas">
+    <app-segmented-control [options]="filters" [value]="filter()" (valueChange)="setFilter($event)" />
+  </app-page-header>
+
+  @for (group of groups(); track group.id) {
+    <app-list-card [name]="group.name" [color]="group.color" [tasks]="group.tasks" (tasksChange)="sync($event)" />
+  } @empty {
+    <p class="lists__empty">No hay tareas que coincidan con este filtro.</p>
+  }
+</div>
