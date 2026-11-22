@@ -1,0 +1,25 @@
+<app-modal-base [open]="open()" title="Iniciar sesión" [width]="400" (closed)="close()">
+  <form class="auth" (submit)="$event.preventDefault(); submit()">
+    <app-form-field
+      label="Correo electrónico"
+      inputType="email"
+      placeholder="tucorreo@ejemplo.com"
+      fieldId="login-email"
+      [required]="true"
+      [(value)]="email"
+    />
+
+    <app-form-field
+      label="Contraseña"
+      inputType="password"
+      placeholder="••••••••"
+      fieldId="login-password"
+      [required]="true"
+      [(value)]="password"
+    />
+
+    <app-button class="auth__submit" variant="primary" type="submit" [disabled]="!valid()">Iniciar sesión</app-button>
+
+    <button type="button" class="auth__link" (click)="goToRegister()">¿No tienes cuenta? Crear cuenta</button>
+  </form>
+</app-modal-base>
