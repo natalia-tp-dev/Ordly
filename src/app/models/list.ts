@@ -1,8 +1,9 @@
 import { EventColor } from 'app/models/agenda';
 
 export interface TaskList {
+  id: string;
   name: string;
-  color: string;
+  color: EventColor;
 }
 
 export interface ListFormValue {

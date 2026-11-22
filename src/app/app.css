@@ -1,0 +1,112 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.app-shell {
+  display: flex;
+  height: 100%;
+}
+
+.app-shell__topbar {
+  display: none;
+}
+
+.app-shell__sidebar {
+  flex-shrink: 0;
+  height: 100%;
+}
+
+.app-shell__scrim {
+  display: none;
+}
+
+.app-shell__content {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  overflow-y: auto;
+  padding: 28px 32px;
+  box-sizing: border-box;
+}
+
+.app-shell__icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0.5px solid var(--border-default, #e2e8f0);
+  border-radius: 8px;
+  background-color: var(--surface-base, #ffffff);
+  color: var(--text-primary, #1e293b);
+  cursor: pointer;
+}
+
+.app-shell__icon-button--primary {
+  border-color: transparent;
+  background-color: var(--brand-primary, #3b82f6);
+  color: var(--text-onbrand, #ffffff);
+}
+
+.app-shell__icon-button:focus-visible {
+  outline: 2px solid var(--brand-primary, #3b82f6);
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .app-shell__topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 16px;
+    border-bottom: 0.5px solid var(--border-default, #e2e8f0);
+    background-color: var(--surface-base, #ffffff);
+  }
+
+  .app-shell__sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 30;
+    max-width: calc(100vw - 48px);
+    box-shadow: 0 12px 32px rgba(30, 41, 59, 0.18);
+    transform: translateX(-105%);
+    transition: transform 0.2s ease;
+  }
+
+  .app-shell__scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: block;
+    background-color: color-mix(in srgb, var(--text-primary, #1e293b) 45%, transparent);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .app-shell--menu-open .app-shell__sidebar {
+    transform: translateX(0);
+  }
+
+  .app-shell--menu-open .app-shell__scrim {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .app-shell__content {
+    padding: 20px 16px;
+  }
+}

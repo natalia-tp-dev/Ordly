@@ -18,7 +18,7 @@
       <span class="sidebar__section-title">PRINCIPAL</span>
     }
     <app-nav-item label="Resumen del día" icon="clock" link="/" [exact]="true" [collapsed]="collapsed()" />
-    <app-nav-item label="Agenda" icon="calendar" link="/agenda" [badge]="agendaCount()" [collapsed]="collapsed()" />
+    <app-nav-item label="Agenda" icon="calendar" link="/agenda" [badge]="agendaCount() || undefined" [collapsed]="collapsed()" />
     <app-nav-item label="Listas" icon="list-check" link="/listas" [badge]="overdueCount() || undefined" [badgeAlert]="true" [collapsed]="collapsed()" />
     <app-nav-item label="Notas" icon="pencil" link="/notas" [collapsed]="collapsed()" />
   </nav>
@@ -40,9 +40,9 @@
   @if (!collapsed()) {
     <div class="sidebar__section">
       <span class="sidebar__section-title">MIS LISTAS</span>
-      @for (list of lists(); track list.name) {
+      @for (list of lists(); track list.id) {
         <div class="sidebar__list">
-          <span class="sidebar__list-dot" [style.background-color]="list.color"></span>
+          <span class="sidebar__list-dot" [style.background-color]="colorVar(list.color)"></span>
           <span class="sidebar__list-name">{{ list.name }}</span>
         </div>
       }

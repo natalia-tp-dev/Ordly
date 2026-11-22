@@ -1,0 +1,42 @@
+<div class="app-shell" [class.app-shell--menu-open]="menuOpen()">
+  <header class="app-shell__topbar">
+    <button type="button" class="app-shell__icon-button" (click)="menuOpen.set(true)">
+      <app-icon name="menu-2" color="currentColor" />
+    </button>
+    <app-logo />
+    <button type="button" class="app-shell__icon-button app-shell__icon-button--primary" (click)="openCreate()">
+      <app-icon name="plus" color="currentColor" />
+    </button>
+  </header>
+
+  <div class="app-shell__sidebar">
+    <app-sidebar
+      [collapsed]="collapsed()"
+      (collapsedChange)="setCollapsed($event)"
+      [userName]="auth.user()?.name ?? ''"
+      [loggedIn]="auth.loggedIn()"
+      [agendaCount]="agenda.todayEvents().length"
+      [overdueCount]="tasks.overdue().length"
+      [lists]="tasks.lists()"
+      (createClick)="openCreate()"
+      (voiceClick)="openCreate()"
+      (loginClick)="openLogin()"
+      (profileClick)="auth.logout()"
+    />
+  </div>
+
+  <div class="app-shell__scrim" (click)="menuOpen.set(false)"></div>
+
+  <main class="app-shell__content">
+    <router-outlet />
+  </main>
+</div>
+
+<app-create-menu
+  [(open)]="createOpen"
+  (taskCreate)="tasks.add($event)"
+  (listCreate)="tasks.addList($event)"
+  (reminderCreate)="agenda.add($event)"
+/>
+<app-login [(open)]="loginOpen" (login)="auth.login($event)" (registerClick)="registerOpen.set(true)" />
+<app-register [(open)]="registerOpen" (register)="auth.register($event)" (loginClick)="loginOpen.set(true)" />

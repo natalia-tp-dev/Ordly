@@ -1,0 +1,72 @@
+<div class="summary">
+  <app-page-header [title]="greeting()" [date]="today">
+    <span class="summary__sync">
+      <span class="summary__sync-dot"></span>
+      Sincronizado hace 2 min
+    </span>
+  </app-page-header>
+
+  @if (insightVisible()) {
+    <app-ai-insight-card
+      message="Tu mañana está densa: tres bloques seguidos sin margen entre ellos, y la entrega del presupuesto cae justo cuando históricamente bajas de energía. Te sugiero mover la revisión de analítica al viernes y dejar la tarde en un solo bloque de foco."
+      primaryLabel="Reorganizar mi tarde"
+      secondaryLabel="Proteger 2 h de foco"
+      (dismissClick)="insightVisible.set(false)"
+    />
+  }
+
+  <div class="summary__row">
+    <section class="summary__card">
+      <h2 class="summary__card-title">Progreso de hoy</h2>
+      <p class="summary__progress-text">{{ completed() }} de {{ total() }} tareas completadas</p>
+      <div class="summary__bar">
+        <div class="summary__bar-fill" [style.width.%]="progress()"></div>
+      </div>
+      <div class="summary__chips">
+        @if (overdueCount()) {
+          <app-chip [label]="overdueCount() + (overdueCount() === 1 ? ' vencida' : ' vencidas')" variant="urgent" />
+        }
+        <app-chip [label]="freeTime()" variant="done" />
+      </div>
+    </section>
+
+    <section class="summary__card summary__card--events">
+      <header class="summary__card-header">
+        <h2 class="summary__card-title">Próximos eventos</h2>
+        <a class="summary__link" routerLink="/agenda">Ver agenda</a>
+      </header>
+      @for (event of upcoming(); track event.id) {
+        <div class="summary__event">
+          <span class="summary__event-time">{{ event.time }}</span>
+          <span class="summary__event-bar" [style.background-color]="event.bar"></span>
+          <span class="summary__event-text">
+            <span class="summary__event-title">{{ event.title }}</span>
+            @if (event.detail) {
+              <span class="summary__event-detail">{{ event.detail }}</span>
+            }
+          </span>
+        </div>
+      } @empty {
+        <p class="summary__empty">No tienes eventos próximos.</p>
+      }
+    </section>
+  </div>
+
+  <section class="summary__card">
+    <header class="summary__card-header">
+      <h2 class="summary__card-title">Prioridades sugeridas</h2>
+      <app-chip label="ordenadas por la IA" variant="blue" />
+    </header>
+    @for (task of priorities(); track task.id) {
+      <app-task-item
+        [title]="task.title"
+        [meta]="task.meta"
+        [priority]="task.priority"
+        [completed]="task.completed"
+        (completedChange)="tasks.setCompleted(task.id, $event)"
+      />
+    } @empty {
+      <p class="summary__empty">No tienes tareas para hoy.</p>
+    }
+  </section>
+</div>
