@@ -1,15 +1,13 @@
-
 import { Component, input } from '@angular/core';
 
-export type ChipVariant = 'urgent' | 'important' | 'normal' | 'category';
+export type ChipVariant = 'urgent' | 'important' | 'normal' | 'done' | 'blue' | 'green' | 'red';
 
 @Component({
   selector: 'app-chip',
-  standalone: true,
   templateUrl: './chip.html',
   styleUrl: './chip.css',
 })
 export class Chip {
   label = input.required<string>();
-  variant = input<ChipVariant>('category');
+  variant = input<ChipVariant>('normal');
 }

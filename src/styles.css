@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --brand-primary: #3b82f6;
+  --brand-primary-soft: #bfdbfe;
+
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-tertiary: #94a3b8;
+  --text-onbrand: #ffffff;
+
+  --surface-base: #ffffff;
+  --surface-muted: #f8f9fa;
+  --surface-active: #eff6ff;
+  --surface-badge: #f1f5f9;
+  --surface-danger: #fef2f2;
+  --surface-success: #ecfdf5;
+  --surface-warning: #fffbeb;
+
+  --state-danger: #ef4444;
+  --state-success: #10b981;
+  --state-warning: #f59e0b;
+  --accent-purple: #8b5cf6;
+
+  --border-default: #e2e8f0;
+
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--surface-muted);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  line-height: 19px;
+  -webkit-font-smoothing: antialiased;
+}

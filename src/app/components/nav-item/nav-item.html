@@ -9,7 +9,7 @@
   @if (!collapsed()) {
     <span class="nav-item__label">{{ label() }}</span>
     @if (badge() !== undefined) {
-      <span class="nav-item__badge">{{ badge() }}</span>
+      <span class="nav-item__badge" [class.nav-item__badge--alert]="badgeAlert()">{{ badge() }}</span>
     }
   }
 </a>

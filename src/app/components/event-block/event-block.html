@@ -1,11 +1,6 @@
-
-<div
-  class="event-block"
-  [class.event-block--work]="category() === 'work'"
-  [class.event-block--personal]="category() === 'personal'"
-  [class.event-block--meeting]="category() === 'meeting'"
-  [class.event-block--other]="category() === 'other'"
->
+<div class="event-block event-block--{{ color() }}">
   <span class="event-block__title">{{ title() }}</span>
-  <span class="event-block__time">{{ time() }}</span>
+  @if (detail()) {
+    <span class="event-block__detail">{{ detail() }}</span>
+  }
 </div>

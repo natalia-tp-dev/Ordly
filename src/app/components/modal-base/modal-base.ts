@@ -1,30 +1,28 @@
-import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, input, output } from '@angular/core';
+import { Icon } from 'app/components/icon/icon';
 
 @Component({
   selector: 'app-modal-base',
-  standalone: true,
-  imports: [CommonModule],
+  imports: [Icon],
   templateUrl: './modal-base.html',
-  styleUrls: ['./modal-base.css']
+  styleUrl: './modal-base.css',
+  host: { '(document:keydown.escape)': 'onEscape()' },
 })
-export class ModalBaseComponent {
-  @Input() isOpen = false;
-  @Input() title = '';
-  @Output() close = new EventEmitter<void>();
+export class ModalBase {
+  open = input(false);
+  title = input('');
+  width = input(520);
+  closed = output<void>();
 
-  @HostListener('document:keydown.escape')
-  onKeydownHandler() {
-    if (this.isOpen) {
-      this.closeModal();
+  onEscape() {
+    if (this.open()) {
+      this.closed.emit();
     }
   }
-  onBackdropClick(event: MouseEvent) {
+
+  onScrimClick(event: MouseEvent) {
     if (event.target === event.currentTarget) {
-      this.closeModal();
+      this.closed.emit();
     }
-  }
-  closeModal() {
-    this.close.emit();
   }
 }

@@ -1,92 +1,46 @@
-
-<app-modal-base
-  [isOpen]="isOpen()"
-  title="Nuevo recordatorio"
-  (close)="cancel()"
->
-  <div class="reminder-form">
-
-    <!-- Título -->
+<app-modal-base [open]="open()" title="Nuevo recordatorio" (closed)="close()">
+  <form class="form" (submit)="$event.preventDefault(); save()">
     <app-form-field
       label="Título"
-      placeholder="Nombre del recordatorio"
+      placeholder="Ej. Entregar informe de estadística"
       fieldId="reminder-title"
-      [value]="title()"
-      (valueChange)="title.set($event)"
       [required]="true"
+      [(value)]="title"
     />
 
-    <!-- Fecha y hora -->
-    <div class="reminder-form__row">
-      <app-form-field
-        label="Fecha"
-        placeholder="DD/MM/AAAA"
-        fieldId="reminder-date"
-        [value]="date()"
-        (valueChange)="date.set($event)"
-        [required]="true"
-      />
-
-      <app-form-field
-        label="Hora"
-        placeholder="HH:MM"
-        fieldId="reminder-time"
-        [value]="time()"
-        (valueChange)="time.set($event)"
-        [required]="true"
-      />
+    <div class="form__row">
+      <app-form-field label="Fecha" inputType="date" fieldId="reminder-date" [(value)]="date" />
+      <app-form-field label="Hora" inputType="time" fieldId="reminder-time" [(value)]="time" />
     </div>
 
-    <!-- Lugar y categoría -->
-    <div class="reminder-form__row">
-      <app-form-field
-        label="Lugar"
-        placeholder="Agregar lugar"
-        fieldId="reminder-place"
-        [value]="place()"
-        (valueChange)="place.set($event)"
-      />
-
+    <div class="form__row">
       <app-form-field
         type="select"
         label="Categoría"
-        placeholder="Seleccionar"
+        placeholder="Seleccionar categoría"
         fieldId="reminder-category"
-        [options]="categories"
-        [value]="category()"
-        (valueChange)="category.set($event)"
+        [options]="categories()"
+        [(value)]="category"
+      />
+      <app-form-field
+        label="Lugar (opcional)"
+        placeholder="Ej. Bloque C · Salón 302"
+        fieldId="reminder-place"
+        [(value)]="place"
       />
     </div>
 
-    <!-- Notas -->
     <app-form-field
       type="textarea"
-      label="Notas"
-      placeholder="Agrega una descripción o detalles..."
+      label="Notas (opcional)"
+      placeholder="Detalles adicionales..."
       fieldId="reminder-notes"
-      [value]="notes()"
-      (valueChange)="notes.set($event)"
+      [(value)]="notes"
     />
 
-    <!-- Botones -->
-    <div class="reminder-form__actions">
-      <app-button
-        variant="secondary"
-        type="button"
-        (click)="cancel()"
-      >
-        Cancelar
-      </app-button>
-
-      <app-button
-        variant="primary"
-        type="button"
-        (click)="saveReminder()"
-      >
-        Crear recordatorio
-      </app-button>
+    <div class="form__actions">
+      <app-button variant="text" (click)="close()">Cancelar</app-button>
+      <app-button variant="primary" type="submit" [disabled]="!title().trim()">Crear recordatorio</app-button>
     </div>
-
-  </div>
+  </form>
 </app-modal-base>
-

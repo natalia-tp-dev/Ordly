@@ -1,17 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AttachmentFieldComponent } from './attachment-field';
+
+import { AttachmentField } from './attachment-field';
 
 describe('AttachmentField', () => {
-  let component: AttachmentFieldComponent;
-  let fixture: ComponentFixture<AttachmentFieldComponent>;
+  let component: AttachmentField;
+  let fixture: ComponentFixture<AttachmentField>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AttachmentFieldComponent]
+      imports: [AttachmentField]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AttachmentFieldComponent);
+    fixture = TestBed.createComponent(AttachmentField);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

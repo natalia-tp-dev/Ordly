@@ -1,7 +1,9 @@
 import { Component, computed, input, output } from '@angular/core';
+import { Icon } from 'app/components/icon/icon';
 
 @Component({
   selector: 'app-user-badge',
+  imports: [Icon],
   templateUrl: './user-badge.html',
   styleUrl: './user-badge.css',
 })
@@ -19,7 +21,15 @@ export class UserBadge {
       .split(/\s+/)
       .filter(Boolean)
       .slice(0, 2)
-      .map((parte) => parte[0].toUpperCase())
+      .map((part) => part[0].toUpperCase())
       .join(''),
   );
+
+  onClick() {
+    if (this.loggedIn()) {
+      this.profileClick.emit();
+    } else {
+      this.loginClick.emit();
+    }
+  }
 }

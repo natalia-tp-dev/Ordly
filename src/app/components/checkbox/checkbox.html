@@ -4,10 +4,14 @@
     type="checkbox"
     [checked]="checked()"
     [disabled]="disabled()"
-    [attr.aria-label]="showLabel() ? null : label()"
-    (change)="onChange($event)"
+    (change)="toggle()"
   />
-  @if (showLabel()) {
+  <span class="checkbox__box" [class.checkbox__box--checked]="checked()">
+    @if (checked()) {
+      <app-icon name="check" [size]="14" color="currentColor" />
+    }
+  </span>
+  @if (label()) {
     <span class="checkbox__label">{{ label() }}</span>
   }
 </label>

@@ -1,28 +1,41 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, computed, input, output, signal } from '@angular/core';
+import { Icon } from 'app/components/icon/icon';
 
 @Component({
   selector: 'app-attachment-field',
-  standalone: true,
-  imports: [CommonModule],
+  imports: [Icon],
   templateUrl: './attachment-field.html',
-  styleUrls: ['./attachment-field.css']
+  styleUrl: './attachment-field.css',
 })
+export class AttachmentField {
+  label = input('Adjuntar archivo');
+  fileChange = output<File | null>();
 
-export class AttachmentFieldComponent {
-  @Output() fileSelected = new EventEmitter<File | null>();
-  selectedFile: File | null = null;
+  file = signal<File | null>(null);
 
-  onFileChange(event: Event) {
+  fileSize = computed(() => {
+    const file = this.file();
+    if (!file) {
+      return '';
+    }
+    if (file.size < 1024 * 1024) {
+      return `${Math.max(1, Math.round(file.size / 1024))} KB`;
+    }
+    return `${(file.size / (1024 * 1024)).toFixed(1)} MB`;
+  });
+
+  select(event: Event) {
     const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
-      this.selectedFile = input.files[0];
-      this.fileSelected.emit(this.selectedFile);
+    const file = input.files?.[0] ?? null;
+    input.value = '';
+    if (file) {
+      this.file.set(file);
+      this.fileChange.emit(file);
     }
   }
 
-  removeFile() {
-    this.selectedFile = null;
-    this.fileSelected.emit(null);
+  remove() {
+    this.file.set(null);
+    this.fileChange.emit(null);
   }
 }

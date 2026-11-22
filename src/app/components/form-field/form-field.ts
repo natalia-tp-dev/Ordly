@@ -1,5 +1,5 @@
-
 import { Component, input, model } from '@angular/core';
+import { Icon } from 'app/components/icon/icon';
 
 export type FormFieldType = 'input' | 'select' | 'textarea';
 
@@ -10,21 +10,18 @@ export interface FormFieldOption {
 
 @Component({
   selector: 'app-form-field',
-  standalone: true,
+  imports: [Icon],
   templateUrl: './form-field.html',
   styleUrl: './form-field.css',
 })
 export class FormField {
   type = input<FormFieldType>('input');
-
   label = input('');
-  placeholder = input('Escribe aquí...');
+  placeholder = input('');
   helpText = input('');
   errorText = input('');
-
-  inputType = input<'text' | 'email' | 'password' | 'number'>('text');
+  inputType = input<'text' | 'email' | 'password' | 'number' | 'date' | 'time'>('text');
   options = input<FormFieldOption[]>([]);
-
   fieldId = input('form-field');
   disabled = input(false);
   required = input(false);
