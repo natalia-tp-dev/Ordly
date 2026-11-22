@@ -37,3 +37,13 @@
   background-color: var(--surface-success, #ecfdf5);
   color: var(--state-success, #10b981);
 }
+
+.chip--amber {
+  background-color: var(--surface-warning, #fffbeb);
+  color: var(--state-warning, #f59e0b);
+}
+
+.chip--purple {
+  background-color: color-mix(in srgb, var(--accent-purple, #8b5cf6) 10%, var(--surface-base, #ffffff));
+  color: var(--accent-purple, #8b5cf6);
+}

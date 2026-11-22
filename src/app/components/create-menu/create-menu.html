@@ -25,7 +25,7 @@
   </div>
 </app-modal-base>
 
-<app-reminder-form [(open)]="reminderOpen" (create)="reminderCreate.emit($event)" />
-<app-task-form [(open)]="taskOpen" (create)="taskCreate.emit($event)" />
+<app-reminder-form [(open)]="reminderOpen" [categories]="lists()" (create)="reminderCreate.emit($event)" />
+<app-task-form [(open)]="taskOpen" [lists]="lists()" (create)="taskCreate.emit($event)" />
 <app-list-form [(open)]="listOpen" (create)="listCreate.emit($event)" />
-<app-note-form [(open)]="noteOpen" (create)="noteCreate.emit($event)" />
+<app-note-form [(open)]="noteOpen" [categories]="lists()" (create)="noteCreate.emit($event)" />

@@ -1,4 +1,5 @@
-import { Component, model, output, signal } from '@angular/core';
+import { Component, input, model, output, signal } from '@angular/core';
+import { FormFieldOption } from 'app/components/form-field/form-field';
 import { Icon } from 'app/components/icon/icon';
 import { ListForm } from 'app/components/list-form/list-form';
 import { ModalBase } from 'app/components/modal-base/modal-base';
@@ -20,6 +21,7 @@ type CreateOption = 'reminder' | 'task' | 'list' | 'note';
 })
 export class CreateMenu {
   open = model(false);
+  lists = input<FormFieldOption[]>([]);
   quickCreate = output<string>();
   voiceClick = output<void>();
   reminderCreate = output<ReminderFormValue>();

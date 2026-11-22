@@ -27,6 +27,8 @@ export class TaskService {
     { id: 't11', title: 'Preparar exposición de bases de datos', meta: 'Para el viernes', priority: 'important', completed: false, listId: 'universidad', due: atTime(today, 2, 10) },
   ]);
 
+  readonly listOptions = computed(() => this.lists().map((list) => ({ label: list.name, value: list.id })));
+
   readonly todayTasks = computed(() => {
     const now = new Date();
     return this.tasks().filter((task) => task.due && sameDay(task.due, now));

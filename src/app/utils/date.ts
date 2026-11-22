@@ -21,6 +21,19 @@ export function formatTime(date: Date): string {
   return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
 }
 
+export function relativeDayLabel(date: Date, now = new Date()): string {
+  if (sameDay(date, now)) {
+    return 'Hoy';
+  }
+  if (sameDay(date, atTime(now, -1, 0))) {
+    return 'Ayer';
+  }
+  if (sameDay(date, atTime(now, 1, 0))) {
+    return 'Mañana';
+  }
+  return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' }).replace('.', '');
+}
+
 export function startOfWeek(date: Date): Date {
   const result = new Date(date.getFullYear(), date.getMonth(), date.getDate());
   const day = result.getDay();

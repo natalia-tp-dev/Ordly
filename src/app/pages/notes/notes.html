@@ -1,0 +1,23 @@
+<div class="notes">
+  <app-page-header title="Notas">
+    <app-button variant="primary" (click)="formOpen.set(true)">Nueva nota</app-button>
+  </app-page-header>
+
+  @if (cards().length) {
+    <div class="notes__grid">
+      @for (card of cards(); track card.id) {
+        <app-note-card
+          [title]="card.title"
+          [excerpt]="card.excerpt"
+          [category]="card.category"
+          [categoryColor]="card.color"
+          [date]="card.date"
+        />
+      }
+    </div>
+  } @else {
+    <p class="notes__empty">Todavía no tienes notas. Crea la primera con "Nueva nota".</p>
+  }
+</div>
+
+<app-note-form [(open)]="formOpen" [categories]="tasks.listOptions()" (create)="notes.add($event)" />

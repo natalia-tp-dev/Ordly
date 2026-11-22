@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 
-export type ChipVariant = 'urgent' | 'important' | 'normal' | 'done' | 'blue' | 'green' | 'red';
+export type ChipVariant = 'urgent' | 'important' | 'normal' | 'done' | 'blue' | 'green' | 'red' | 'amber' | 'purple';
 
 @Component({
   selector: 'app-chip',
