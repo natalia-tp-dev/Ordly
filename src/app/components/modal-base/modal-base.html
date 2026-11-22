@@ -1,22 +1,13 @@
-<header class="modal-header">
-  <h2 class="modal-title">{{ title }}</h2>
-  <button type="button" class="close-button" (click)="closeModal()" aria-label="Cerrar">
-    &times;
-  </button>
-</header>
-<div class="modal-scrim" *ngIf="isOpen" (click)="onBackdropClick($event)">
-  <div class="modal-container" (click)="$event.stopPropagation()">
-    
-    <header class="modal-header">
-      <h2 class="modal-title">{{ title }}</h2>
-      <button class="close-button" (click)="closeModal()" aria-label="Cerrar">
-        <i class="bi bi-x-lg"></i>
-      </button>
-    </header>
-
-    <div class="modal-content-area">
-      <ng-content></ng-content>
+@if (open()) {
+  <div class="modal__scrim" (click)="onScrimClick($event)">
+    <div class="modal" [style.max-width.px]="width()">
+      <header class="modal__header">
+        <h2 class="modal__title">{{ title() }}</h2>
+        <button type="button" class="modal__close" (click)="closed.emit()">
+          <app-icon name="x" color="currentColor" />
+        </button>
+      </header>
+      <ng-content />
     </div>
-
   </div>
-</div>
+}

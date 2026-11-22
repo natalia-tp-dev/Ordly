@@ -19,7 +19,7 @@
     }
     <app-nav-item label="Resumen del día" icon="clock" link="/" [exact]="true" [collapsed]="collapsed()" />
     <app-nav-item label="Agenda" icon="calendar" link="/agenda" [badge]="agendaCount()" [collapsed]="collapsed()" />
-    <app-nav-item label="Listas" icon="list-check" link="/listas" [collapsed]="collapsed()" />
+    <app-nav-item label="Listas" icon="list-check" link="/listas" [badge]="overdueCount() || undefined" [badgeAlert]="true" [collapsed]="collapsed()" />
     <app-nav-item label="Notas" icon="pencil" link="/notas" [collapsed]="collapsed()" />
   </nav>
 

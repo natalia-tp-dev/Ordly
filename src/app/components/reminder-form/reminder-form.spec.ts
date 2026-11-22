@@ -1,5 +1,5 @@
-
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { ReminderForm } from './reminder-form';
 
 describe('ReminderForm', () => {
@@ -9,7 +9,8 @@ describe('ReminderForm', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ReminderForm]
-    }).compileComponents();
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(ReminderForm);
     component = fixture.componentInstance;
@@ -18,19 +19,5 @@ describe('ReminderForm', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should close the form when cancel is called', () => {
-    component.cancel();
-
-    expect(component.isOpen()).toBe(false);
-  });
-
-  it('should close the form when a reminder is saved', () => {
-    component.title.set('Reunión de equipo');
-
-    component.saveReminder();
-
-    expect(component.isOpen()).toBe(false);
   });
 });

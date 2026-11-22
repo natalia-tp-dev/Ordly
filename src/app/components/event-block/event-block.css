@@ -1,57 +1,61 @@
-
 :host {
   display: block;
-  width: 100%;
-  font-family: 'Inter', sans-serif;
+  min-width: 0;
 }
 
 .event-block {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 8px 10px;
-  border-left: 3px solid transparent;
-  border-radius: 6px;
-  min-width: 0;
+  gap: 1px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 4px 8px;
+  border-left: 2px solid currentColor;
+  border-radius: 4px;
+  overflow: hidden;
+  font-family: var(--font-body, 'Inter', sans-serif);
 }
 
 .event-block__title {
-  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-weight: 500;
+  font-size: 11px;
   line-height: 15px;
-  overflow-wrap: anywhere;
 }
 
-.event-block__time {
-  font-size: 10px;
+.event-block__detail {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-weight: 400;
-  line-height: 14px;
+  font-size: 12px;
+  line-height: 17px;
+  opacity: 0.8;
 }
 
-/* Trabajo */
-.event-block--work {
-  background-color: var(--surface-active, #EFF6FF);
-  border-left-color: var(--brand-primary, #3B82F6);
-  color: var(--brand-primary, #3B82F6);
+.event-block--blue {
+  background-color: var(--surface-active, #eff6ff);
+  color: var(--brand-primary, #3b82f6);
 }
 
-/* Personal */
-.event-block--personal {
-  background-color: var(--surface-badge, #F1F5F9);
-  border-left-color: var(--accent-purple, #8B5CF6);
-  color: var(--accent-purple, #8B5CF6);
+.event-block--green {
+  background-color: var(--surface-success, #ecfdf5);
+  color: var(--state-success, #10b981);
 }
 
-/* Reunión */
-.event-block--meeting {
-  background-color: var(--surface-warning, #FFFBEB);
-  border-left-color: var(--state-warning, #F59E0B);
-  color: var(--state-warning, #F59E0B);
+.event-block--red {
+  background-color: var(--surface-danger, #fef2f2);
+  color: var(--state-danger, #ef4444);
 }
 
-/* Otros */
-.event-block--other {
-  background-color: var(--surface-muted, #F8F9FA);
-  border-left-color: var(--text-secondary, #64748B);
-  color: var(--text-secondary, #64748B);
+.event-block--amber {
+  background-color: var(--surface-warning, #fffbeb);
+  color: var(--state-warning, #f59e0b);
+}
+
+.event-block--purple {
+  background-color: color-mix(in srgb, var(--accent-purple, #8b5cf6) 10%, var(--surface-base, #ffffff));
+  color: var(--accent-purple, #8b5cf6);
 }

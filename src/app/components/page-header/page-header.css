@@ -55,3 +55,23 @@
 .page-header__actions:empty {
   display: none;
 }
+
+@media (max-width: 640px) {
+  .page-header {
+    flex-wrap: wrap;
+  }
+
+  .page-header__text {
+    flex-basis: 100%;
+  }
+
+  .page-header__title {
+    white-space: normal;
+  }
+
+  .page-header__actions {
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+}

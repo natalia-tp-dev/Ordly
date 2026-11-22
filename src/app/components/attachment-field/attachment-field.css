@@ -1,64 +1,86 @@
-.attachment-wrapper {
-  display: inline-flex;
-  align-items: center;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+:host {
+  display: block;
+  max-width: 100%;
+  font-family: var(--font-body, 'Inter', sans-serif);
 }
 
-.attachment-btn {
-  display: inline-flex;
+.attachment__picker {
+  display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px;
-  background-color: var(--surface-base, #ffffff);
-  color: var(--text-primary, #1E293B);
-  border: 1px solid #E2E8F0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0.5px solid var(--border-default, #e2e8f0);
   border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
+  background-color: var(--surface-muted, #f8f9fa);
+  color: var(--text-secondary, #64748b);
   font-weight: 500;
+  font-size: 13.5px;
+  line-height: 19px;
+  cursor: pointer;
 }
 
-.attachment-btn:hover {
-  background-color: #F8FAFC;
+.attachment__picker:focus-within {
+  outline: 2px solid var(--brand-primary, #3b82f6);
+  outline-offset: 2px;
 }
 
-.file-chip {
-  display: inline-flex;
+.attachment__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.attachment__file {
+  display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 10px 6px 12px;
-  background-color: #F1F5F9;
-  border: 1px solid #E2E8F0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 9px 12px;
   border-radius: 8px;
-  max-width: 280px;
+  background-color: var(--surface-muted, #f8f9fa);
 }
 
-.file-chip .file-icon {
-  color: #3B82F6;
-  font-size: 16px;
+.attachment__info {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  font-size: 12px;
+  line-height: 17px;
 }
 
-.file-chip .file-name {
-  font-size: 13px;
-  color: var(--text-primary, #1E293B);
+.attachment__name {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-weight: 500;
+  color: var(--text-primary, #1e293b);
 }
 
-.file-chip .remove-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
+.attachment__size {
+  color: var(--text-tertiary, #94a3b8);
+}
+
+.attachment__remove {
+  display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  padding: 2px;
-  border-radius: 50%;
-  color: #64748B;
+  padding: 4px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--text-secondary, #64748b);
+  cursor: pointer;
 }
 
-.file-chip .remove-btn:hover {
-  background-color: #E2E8F0;
-  color: #EF4444;
+.attachment__remove:hover {
+  background-color: var(--surface-badge, #f1f5f9);
+  color: var(--state-danger, #ef4444);
 }

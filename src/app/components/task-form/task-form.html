@@ -1,100 +1,53 @@
-
-<app-modal-base
-  [isOpen]="isOpen()"
-  title="Nueva tarea"
-  (close)="cancel()"
->
-  <div class="task-form">
-
-    <!-- Título -->
+<app-modal-base [open]="open()" title="Nueva tarea" (closed)="close()">
+  <form class="form" (submit)="$event.preventDefault(); save()">
     <app-form-field
       label="Título"
-      placeholder="Escribe el nombre de la tarea"
+      placeholder="Ej. Leer capítulo 4 de sistemas operativos"
       fieldId="task-title"
       [required]="true"
-      [value]="title()"
-      (valueChange)="title.set($event)"
+      [(value)]="title"
     />
 
-    <!-- Lista -->
     <app-form-field
       type="select"
       label="Lista"
-      placeholder="Selecciona una lista"
+      placeholder="Seleccionar lista"
       fieldId="task-list"
-      [options]="lists"
-      [value]="list()"
-      (valueChange)="list.set($event)"
+      [options]="lists()"
+      [(value)]="list"
     />
 
-    <!-- Fecha -->
-    <app-form-field
-      label="Fecha"
-      inputType="text"
-      placeholder="DD/MM/AAAA"
-      fieldId="task-date"
-      [value]="date()"
-      (valueChange)="date.set($event)"
-    />
+    <div class="form__row">
+      <app-form-field label="Fecha" inputType="date" fieldId="task-date" [(value)]="date" />
+      <app-form-field label="Hora (opcional)" inputType="time" fieldId="task-time" [(value)]="time" />
+    </div>
 
-    <!-- Prioridad -->
-    <div class="task-form__priority">
-      <span class="task-form__label">Prioridad</span>
-
-      <div class="task-form__priority-options">
-        <button
-          type="button"
-          class="task-form__priority-button"
-          [class.task-form__priority-button--selected]="priority() === 'urgent'"
-          (click)="selectPriority('urgent')"
-        >
-          <app-chip label="Urgente" variant="urgent" />
-        </button>
-
-        <button
-          type="button"
-          class="task-form__priority-button"
-          [class.task-form__priority-button--selected]="priority() === 'important'"
-          (click)="selectPriority('important')"
-        >
-          <app-chip label="Importante" variant="important" />
-        </button>
-
-        <button
-          type="button"
-          class="task-form__priority-button"
-          [class.task-form__priority-button--selected]="priority() === 'normal'"
-          (click)="selectPriority('normal')"
-        >
-          <app-chip label="Normal" variant="normal" />
-        </button>
+    <div class="form__group">
+      <span class="form__label">Prioridad</span>
+      <div class="form__chips">
+        @for (option of priorities; track option.value) {
+          <button
+            type="button"
+            class="form__chip"
+            [class.form__chip--selected]="priority() === option.value"
+            (click)="priority.set(option.value)"
+          >
+            <app-chip [label]="option.label" [variant]="option.value" />
+          </button>
+        }
       </div>
     </div>
 
-    <!-- Notas -->
-    <div class="task-form__notes">
-      <label class="task-form__label" for="task-notes">Notas</label>
+    <app-form-field
+      label="Notas (opcional)"
+      placeholder="Detalles adicionales…"
+      fieldId="task-notes"
+      [(value)]="notes"
+    />
 
-      <input
-        id="task-notes"
-        class="task-form__notes-input"
-        type="text"
-        placeholder="Detalles adicionales"
-        [value]="notes()"
-        (input)="notes.set($any($event.target).value)"
-      />
+    <div class="form__actions">
+      <app-button variant="text" (click)="close()">Cancelar</app-button>
+      <app-button variant="primary" type="submit" [disabled]="!title().trim()">Crear tarea</app-button>
     </div>
-
-    <!-- Botones -->
-    <div class="task-form__actions">
-      <app-button variant="secondary" (click)="cancel()">
-        Cancelar
-      </app-button>
-
-      <app-button variant="primary" (click)="saveTask()">
-        Crear tarea
-      </app-button>
-    </div>
-
-  </div>
+  </form>
 </app-modal-base>

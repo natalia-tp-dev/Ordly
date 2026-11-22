@@ -1,47 +1,39 @@
-
 :host {
-  display: inline-block;
-  font-family: 'Inter', sans-serif;
+  display: inline-flex;
 }
 
 .chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 24px;
-  padding: 4px 8px;
-  border: 0.5px solid transparent;
-  border-radius: 6px;
-  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-family: var(--font-body, 'Inter', sans-serif);
   font-weight: 500;
+  font-size: 11px;
   line-height: 15px;
   white-space: nowrap;
 }
 
-/* Prioridad urgente */
-.chip--urgent {
-  color: var(--state-danger, #ef4444);
+.chip--urgent,
+.chip--red {
   background-color: var(--surface-danger, #fef2f2);
-  border-color: var(--state-danger, #ef4444);
+  color: var(--state-danger, #ef4444);
 }
 
-/* Prioridad importante */
-.chip--important {
-  color: var(--state-warning, #f59e0b);
-  background-color: var(--surface-warning, #fffbeb);
-  border-color: var(--state-warning, #f59e0b);
+.chip--important,
+.chip--blue {
+  background-color: var(--surface-active, #eff6ff);
+  color: var(--brand-primary, #3b82f6);
 }
 
-/* Prioridad normal */
 .chip--normal {
-  color: var(--state-success, #10b981);
-  background-color: var(--surface-success, #ecfdf5);
-  border-color: var(--state-success, #10b981);
+  background-color: var(--surface-badge, #f1f5f9);
+  color: var(--text-secondary, #64748b);
 }
 
-/* Categoría */
-.chip--category {
-  color: var(--text-secondary, #64748b);
-  background-color: var(--surface-badge, #f1f5f9);
-  border-color: var(--border-default, #e2e8f0);
+.chip--done,
+.chip--green {
+  background-color: var(--surface-success, #ecfdf5);
+  color: var(--state-success, #10b981);
 }

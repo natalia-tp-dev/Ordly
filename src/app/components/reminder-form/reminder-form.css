@@ -1,61 +1,28 @@
-
-:host {
-  display: block;
-  width: 100%;
-  font-family: 'Inter', sans-serif;
-}
-
-.reminder-form {
+.form {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  width: 100%;
+  gap: 20px;
 }
 
-.reminder-form__row {
+.form__row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
-  width: 100%;
 }
 
-.reminder-form__actions {
+.form__actions {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   gap: 10px;
-  width: 100%;
-  margin-top: 4px;
 }
 
-/* Ajustes locales para respetar el diseño de Figma */
-.reminder-form ::ng-deep .form-field__label {
-  color: var(--text-secondary, #64748b);
-}
-
-.reminder-form ::ng-deep .form-field__textarea {
-  min-height: 72px;
-}
-
-
-@media (max-width: 600px) {
-  :host ::ng-deep .modal-container {
-    box-sizing: border-box;
-    width: calc(100vw - 32px);
-    max-width: 520px;
-    padding: 22px 20px;
-  }
-
-  .reminder-form__row {
+@media (max-width: 480px) {
+  .form__row {
     grid-template-columns: 1fr;
   }
 
-  .reminder-form__actions {
-    justify-content: stretch;
-  }
-
-  .reminder-form__actions app-button {
-    flex: 1;
+  .form__actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
   }
 }
-

@@ -1,48 +1,61 @@
+import { Component, input, model, output, signal } from '@angular/core';
+import { Button } from 'app/components/button/button';
+import { FormField, FormFieldOption } from 'app/components/form-field/form-field';
+import { ModalBase } from 'app/components/modal-base/modal-base';
 
-import { Component, signal } from '@angular/core';
-import { ModalBaseComponent } from '../modal-base/modal-base';
-import { FormField } from '../form-field/form-field';
-import { Button } from '../button/button';
+export interface ReminderFormValue {
+  title: string;
+  date: string;
+  time: string;
+  category: string;
+  place: string;
+  notes: string;
+}
 
 @Component({
   selector: 'app-reminder-form',
-  standalone: true,
-  imports: [ModalBaseComponent, FormField, Button],
+  imports: [ModalBase, FormField, Button],
   templateUrl: './reminder-form.html',
   styleUrl: './reminder-form.css',
 })
 export class ReminderForm {
-  isOpen = signal(true);
+  open = model(false);
+  categories = input<FormFieldOption[]>([
+    { label: 'Personal', value: 'personal' },
+    { label: 'Universidad', value: 'universidad' },
+    { label: 'Citas médicas', value: 'citas-medicas' },
+  ]);
+  create = output<ReminderFormValue>();
 
   title = signal('');
   date = signal('');
   time = signal('');
-  place = signal('');
   category = signal('');
+  place = signal('');
   notes = signal('');
 
-  categories = [
-    { label: 'Trabajo', value: 'work' },
-    { label: 'Personal', value: 'personal' },
-    { label: 'Estudio', value: 'study' },
-    { label: 'Otros', value: 'other' },
-  ];
-
-  saveReminder() {
-    const reminder = {
-      title: this.title(),
+  save() {
+    if (!this.title().trim()) {
+      return;
+    }
+    this.create.emit({
+      title: this.title().trim(),
       date: this.date(),
       time: this.time(),
-      place: this.place(),
       category: this.category(),
-      notes: this.notes(),
-    };
-
-    console.log('Recordatorio creado:', reminder);
-    this.isOpen.set(false);
+      place: this.place().trim(),
+      notes: this.notes().trim(),
+    });
+    this.close();
   }
 
-  cancel() {
-    this.isOpen.set(false);
+  close() {
+    this.open.set(false);
+    this.title.set('');
+    this.date.set('');
+    this.time.set('');
+    this.category.set('');
+    this.place.set('');
+    this.notes.set('');
   }
 }

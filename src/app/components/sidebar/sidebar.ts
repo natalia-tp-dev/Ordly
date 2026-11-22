@@ -20,6 +20,7 @@ export class Sidebar {
   userName = input('María Paz');
   loggedIn = input(true);
   agendaCount = input<number>(3);
+  overdueCount = input<number>(2);
   lists = input<SidebarList[]>([
     { name: 'Personal', color: 'var(--state-success, #10b981)' },
     { name: 'Universidad', color: 'var(--brand-primary, #3b82f6)' },

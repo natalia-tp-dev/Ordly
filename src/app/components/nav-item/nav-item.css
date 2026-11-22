@@ -53,6 +53,11 @@
   line-height: 15px;
 }
 
+.nav-item__badge--alert {
+  background-color: var(--state-danger, #ef4444);
+  color: var(--text-onbrand, #ffffff);
+}
+
 .nav-item--collapsed {
   width: 40px;
   justify-content: center;

@@ -15,4 +15,5 @@ export class NavItem {
   exact = input(false);
   collapsed = input(false);
   badge = input<number>();
+  badgeAlert = input(false);
 }
