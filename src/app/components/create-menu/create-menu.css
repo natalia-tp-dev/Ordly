@@ -1,0 +1,126 @@
+.create__ai {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 6px 6px 14px;
+  border: 0.5px solid var(--border-default, #e2e8f0);
+  border-radius: 10px;
+  background-color: var(--surface-muted, #f8f9fa);
+}
+
+.create__ai:focus-within {
+  border-color: var(--brand-primary, #3b82f6);
+  box-shadow: 0 0 0 2px var(--brand-primary-soft, #bfdbfe);
+}
+
+.create__ai-input {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--text-primary, #1e293b);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 13.5px;
+  line-height: 19px;
+}
+
+.create__ai-input::placeholder {
+  color: var(--text-tertiary, #94a3b8);
+}
+
+.create__ai-voice {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background-color: var(--brand-primary, #3b82f6);
+  color: var(--text-onbrand, #ffffff);
+  cursor: pointer;
+}
+
+.create__options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.create__option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 14px 16px;
+  border: 0.5px solid var(--border-default, #e2e8f0);
+  border-radius: 10px;
+  background-color: var(--surface-base, #ffffff);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.create__option:hover {
+  border-color: var(--brand-primary-soft, #bfdbfe);
+  background-color: var(--surface-muted, #f8f9fa);
+}
+
+.create__ai-voice:focus-visible,
+.create__option:focus-visible {
+  outline: 2px solid var(--brand-primary, #3b82f6);
+  outline-offset: 2px;
+}
+
+.create__option-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+.create__option-icon--reminder {
+  background-color: var(--surface-active, #eff6ff);
+  color: var(--brand-primary, #3b82f6);
+}
+
+.create__option-icon--task {
+  background-color: var(--surface-warning, #fffbeb);
+  color: var(--state-warning, #f59e0b);
+}
+
+.create__option-icon--list {
+  background-color: var(--surface-success, #ecfdf5);
+  color: var(--state-success, #10b981);
+}
+
+.create__option-icon--note {
+  background-color: var(--surface-danger, #fef2f2);
+  color: var(--state-danger, #ef4444);
+}
+
+.create__option-label {
+  font-weight: 500;
+  font-size: 13.5px;
+  line-height: 19px;
+  color: var(--text-primary, #1e293b);
+}
+
+.create__option-description {
+  font-size: 12px;
+  line-height: 17px;
+  color: var(--text-tertiary, #94a3b8);
+}
+
+@media (max-width: 600px) {
+  .create__options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
