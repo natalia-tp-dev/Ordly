@@ -1,0 +1,34 @@
+<app-modal-base [open]="open()" title="Crear cuenta" [width]="400" (closed)="close()">
+  <form class="auth" (submit)="$event.preventDefault(); submit()">
+    <app-form-field
+      label="Nombre completo"
+      placeholder="Ej. María Paz"
+      fieldId="register-name"
+      [required]="true"
+      [(value)]="name"
+    />
+
+    <app-form-field
+      label="Correo electrónico"
+      inputType="email"
+      placeholder="tucorreo@ejemplo.com"
+      fieldId="register-email"
+      [required]="true"
+      [(value)]="email"
+    />
+
+    <app-form-field
+      label="Contraseña"
+      inputType="password"
+      placeholder="Mínimo 8 caracteres"
+      fieldId="register-password"
+      [required]="true"
+      [errorText]="passwordError()"
+      [(value)]="password"
+    />
+
+    <app-button class="auth__submit" variant="primary" type="submit" [disabled]="!valid()">Crear cuenta</app-button>
+
+    <button type="button" class="auth__link" (click)="goToLogin()">¿Ya tienes cuenta? Iniciar sesión</button>
+  </form>
+</app-modal-base>
