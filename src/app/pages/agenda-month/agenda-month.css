@@ -1,0 +1,127 @@
+:host {
+  display: block;
+}
+
+.agenda {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.agenda__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  align-items: start;
+  gap: 18px;
+}
+
+.agenda__side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.agenda__day {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 20px;
+  border: 0.5px solid var(--border-default, #e2e8f0);
+  border-radius: 12px;
+  background-color: var(--surface-base, #ffffff);
+  font-family: var(--font-body, 'Inter', sans-serif);
+}
+
+.agenda__day-title {
+  margin: 0 0 4px;
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 24px;
+  color: var(--text-primary, #1e293b);
+}
+
+.agenda__day-event {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 6px 8px;
+  margin: 0 -8px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-sizing: content-box;
+}
+
+.agenda__day-event:hover {
+  background-color: var(--surface-muted, #f8f9fa);
+}
+
+.agenda__day-event--selected {
+  background-color: var(--surface-active, #eff6ff);
+}
+
+.agenda__day-event:focus-visible {
+  outline: 2px solid var(--brand-primary, #3b82f6);
+  outline-offset: 1px;
+}
+
+.agenda__day-time {
+  flex-shrink: 0;
+  width: 36px;
+  font-size: 12px;
+  line-height: 17px;
+  color: var(--text-secondary, #64748b);
+}
+
+.agenda__day-bar {
+  flex-shrink: 0;
+  width: 2px;
+  height: 36px;
+  border-radius: 1px;
+}
+
+.agenda__day-text {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.agenda__day-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+  font-size: 13.5px;
+  line-height: 19px;
+  color: var(--text-primary, #1e293b);
+}
+
+.agenda__day-detail {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 17px;
+  color: var(--text-tertiary, #94a3b8);
+}
+
+.agenda__day-empty {
+  margin: 0;
+  font-size: 12px;
+  line-height: 17px;
+  color: var(--text-tertiary, #94a3b8);
+}
+
+@media (max-width: 1100px) {
+  .agenda__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,51 @@
+<div class="agenda">
+  <app-page-header [title]="title()">
+    <app-agenda-toolbar
+      view="month"
+      [date]="agenda.date()"
+      (dateChange)="agenda.date.set($event)"
+      (viewChange)="changeView($event)"
+    />
+  </app-page-header>
+
+  <div class="agenda__body">
+    <app-month-calendar
+      [date]="agenda.date()"
+      [events]="agenda.events()"
+      [selectedId]="agenda.selectedId()"
+      (eventClick)="agenda.selectedId.set($event.id)"
+      (dayClick)="agenda.selectDay($event)"
+    />
+
+    <div class="agenda__side">
+      <section class="agenda__day">
+        <h2 class="agenda__day-title">{{ dayTitle() }}</h2>
+        @for (event of dayEvents(); track event.id) {
+          <button
+            type="button"
+            class="agenda__day-event"
+            [class.agenda__day-event--selected]="event.id === agenda.selectedId()"
+            (click)="agenda.selectedId.set(event.id)"
+          >
+            <span class="agenda__day-time">{{ event.time }}</span>
+            <span class="agenda__day-bar" [style.background-color]="event.bar"></span>
+            <span class="agenda__day-text">
+              <span class="agenda__day-name">{{ event.title }}</span>
+              @if (event.detail) {
+                <span class="agenda__day-detail">{{ event.detail }}</span>
+              }
+            </span>
+          </button>
+        } @empty {
+          <p class="agenda__day-empty">No hay eventos este día.</p>
+        }
+      </section>
+
+      <app-event-detail
+        [event]="agenda.selected()"
+        [category]="agenda.selectedCategory()"
+        (attach)="agenda.attach(agenda.selectedId()!, $event)"
+      />
+    </div>
+  </div>
+</div>

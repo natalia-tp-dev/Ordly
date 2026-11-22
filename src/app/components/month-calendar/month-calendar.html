@@ -1,0 +1,46 @@
+<div class="month-calendar">
+  <div class="month-calendar__weekdays">
+    @for (weekday of weekdays; track weekday) {
+      <span class="month-calendar__weekday">{{ weekday }}</span>
+    }
+  </div>
+
+  @for (week of weeks(); track week[0].date.getTime()) {
+    <div class="month-calendar__week">
+      @for (cell of week; track cell.date.getTime()) {
+        <div
+          class="month-calendar__cell"
+          [class.month-calendar__cell--outside]="!cell.inMonth"
+          [class.month-calendar__cell--today]="cell.today"
+          (click)="dayClick.emit(cell.date)"
+        >
+          <span class="month-calendar__number">{{ cell.date.getDate() }}</span>
+
+          <div class="month-calendar__events">
+            @for (event of cell.events.slice(0, cell.events.length > 2 ? 1 : 2); track event.id) {
+              <button
+                type="button"
+                class="month-calendar__event"
+                [class.month-calendar__event--selected]="event.id === selectedId()"
+                (click)="$event.stopPropagation(); eventClick.emit(event)"
+              >
+                <app-event-block [title]="event.title" [color]="event.color" />
+              </button>
+            }
+            @if (cell.events.length > 2) {
+              <span class="month-calendar__more">+{{ cell.events.length - 1 }} más</span>
+            }
+          </div>
+
+          @if (cell.events.length) {
+            <div class="month-calendar__dots">
+              @for (event of cell.events.slice(0, 3); track event.id) {
+                <span class="month-calendar__dot month-calendar__dot--{{ event.color }}"></span>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

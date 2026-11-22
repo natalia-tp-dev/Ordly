@@ -1,0 +1,46 @@
+<aside class="event-detail">
+  <span class="event-detail__section">DETALLE DEL EVENTO</span>
+
+  @if (event(); as current) {
+    @if (category(); as label) {
+      <app-chip [label]="label" [variant]="current.color" />
+    }
+    <h2 class="event-detail__title">{{ current.title }}</h2>
+    <div class="event-detail__info">
+      <span class="event-detail__when">{{ when() }}</span>
+      @if (current.detail) {
+        <span class="event-detail__place">{{ current.detail }}</span>
+      }
+    </div>
+
+    @if (participants().length) {
+      <span class="event-detail__section">PARTICIPANTES</span>
+      <div class="event-detail__people">
+        @for (person of participants(); track person.name) {
+          <div class="event-detail__person">
+            <span class="event-detail__avatar event-detail__avatar--{{ person.color }}">{{ person.initials }}</span>
+            <span class="event-detail__person-name">{{ person.name }}</span>
+          </div>
+        }
+      </div>
+    }
+
+    @if (attachments().length) {
+      <span class="event-detail__section">ARCHIVOS ADJUNTOS · {{ attachments().length }}</span>
+      @for (file of attachments(); track $index) {
+        <div class="event-detail__file">
+          <span class="event-detail__file-name">{{ file.name }}</span>
+          <span class="event-detail__file-size">{{ file.size }}</span>
+        </div>
+      }
+    }
+
+    <div class="event-detail__actions">
+      <app-button variant="primary" (click)="edit.emit()">Editar evento</app-button>
+      <app-button variant="secondary" (click)="fileInput.click()">Adjuntar</app-button>
+      <input #fileInput class="event-detail__input" type="file" (change)="select(fileInput)" />
+    </div>
+  } @else {
+    <p class="event-detail__empty">Selecciona un evento para ver su detalle.</p>
+  }
+</aside>
