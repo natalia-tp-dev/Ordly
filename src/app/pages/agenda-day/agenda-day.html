@@ -1,0 +1,19 @@
+<div class="agenda">
+  <app-page-header [title]="title()">
+    <app-agenda-toolbar
+      view="day"
+      [date]="agenda.date()"
+      (dateChange)="agenda.date.set($event)"
+      (viewChange)="changeView($event)"
+    />
+  </app-page-header>
+
+  <div class="agenda__body">
+    <app-time-grid [days]="days()" [events]="agenda.events()" (eventClick)="agenda.selectedId.set($event.id)" />
+    <app-event-detail
+      [event]="agenda.selected()"
+      [category]="agenda.selectedCategory()"
+      (attach)="agenda.attach(agenda.selectedId()!, $event)"
+    />
+  </div>
+</div>
