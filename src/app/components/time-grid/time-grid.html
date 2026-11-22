@@ -1,0 +1,52 @@
+<div class="time-grid" [class.time-grid--compact]="compact()">
+  @if (!single()) {
+    <div class="time-grid__header">
+      <span class="time-grid__gutter"></span>
+      @for (column of columns(); track column.date.getTime()) {
+        <span class="time-grid__day">
+          <span class="time-grid__weekday">{{ column.weekday }}</span>
+          <span class="time-grid__number" [class.time-grid__number--today]="column.today">{{ column.number }}</span>
+        </span>
+      }
+    </div>
+  }
+
+  <div class="time-grid__body" [style.height.px]="gridHeight()">
+    <div class="time-grid__hours">
+      @for (hour of hours(); track hour.long) {
+        <div class="time-grid__hour" [style.height.px]="rowHeight()">
+          <span class="time-grid__hour-label">{{ compact() ? hour.short : hour.long }}</span>
+        </div>
+      }
+    </div>
+
+    <div class="time-grid__columns">
+      @for (column of columns(); track column.date.getTime()) {
+        <div class="time-grid__column">
+          @for (placed of column.events; track placed.event.id) {
+            <button
+              type="button"
+              class="time-grid__event"
+              [style.top.px]="placed.top"
+              [style.height.px]="placed.height"
+              [style.left]="'calc(' + placed.left + '% + ' + inset() + 'px)'"
+              [style.width]="'calc(' + placed.width + '% - ' + inset() * 2 + 'px)'"
+              (click)="eventClick.emit(placed.event)"
+            >
+              <app-event-block
+                [title]="placed.event.title"
+                [detail]="single() ? placed.event.detail : undefined"
+                [color]="placed.event.color"
+                [compact]="compact()"
+              />
+            </button>
+          }
+        </div>
+      }
+
+      @if (nowTop() !== null) {
+        <div class="time-grid__now" [style.top.px]="nowTop()"></div>
+      }
+    </div>
+  </div>
+</div>
