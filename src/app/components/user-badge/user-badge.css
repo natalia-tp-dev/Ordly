@@ -2,7 +2,7 @@
   display: block;
 }
 
-.badge {
+.user-badge {
   display: flex;
   align-items: center;
   gap: 11px;
@@ -19,22 +19,22 @@
   cursor: pointer;
 }
 
-.badge:hover {
+.user-badge:hover {
   background-color: var(--surface-muted, #f8f9fa);
 }
 
-.badge:focus-visible {
+.user-badge:focus-visible {
   outline: 2px solid var(--brand-primary, #3b82f6);
   outline-offset: 2px;
 }
 
-.badge--collapsed {
+.user-badge--collapsed {
   justify-content: center;
   width: 40px;
   padding: 0;
 }
 
-.badge__avatar {
+.user-badge__avatar {
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
@@ -49,12 +49,12 @@
   line-height: 15px;
 }
 
-.badge__avatar--guest {
+.user-badge__avatar--guest {
   background-color: var(--surface-active, #eff6ff);
   color: var(--brand-primary, #3b82f6);
 }
 
-.badge__info {
+.user-badge__info {
   display: flex;
   flex: 1 1 0;
   flex-direction: column;
@@ -62,7 +62,7 @@
   min-width: 0;
 }
 
-.badge__name {
+.user-badge__name {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -72,11 +72,11 @@
   color: var(--text-primary, #1e293b);
 }
 
-.badge__name--login {
+.user-badge__name--login {
   color: var(--brand-primary, #3b82f6);
 }
 
-.badge__hint {
+.user-badge__hint {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -1,0 +1,30 @@
+<app-modal-base [open]="open()" title="Nueva lista" [width]="460" (closed)="close()">
+  <form class="form" (submit)="$event.preventDefault(); save()">
+    <app-form-field
+      label="Nombre de la lista"
+      placeholder="Ej. Proyecto de grado"
+      fieldId="list-name"
+      [required]="true"
+      [(value)]="name"
+    />
+
+    <div class="form__group">
+      <span class="form__label">Color de la lista</span>
+      <div class="form__colors">
+        @for (option of colors; track option) {
+          <button
+            type="button"
+            class="form__color form__color--{{ option }}"
+            [class.form__color--selected]="color() === option"
+            (click)="color.set(option)"
+          ></button>
+        }
+      </div>
+    </div>
+
+    <div class="form__actions">
+      <app-button variant="text" (click)="close()">Cancelar</app-button>
+      <app-button variant="primary" type="submit" [disabled]="!name().trim()">Crear lista</app-button>
+    </div>
+  </form>
+</app-modal-base>

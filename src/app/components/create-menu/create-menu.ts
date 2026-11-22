@@ -1,8 +1,10 @@
 import { Component, model, output, signal } from '@angular/core';
 import { Icon } from 'app/components/icon/icon';
+import { ListForm } from 'app/components/list-form/list-form';
 import { ModalBase } from 'app/components/modal-base/modal-base';
 import { ReminderForm } from 'app/components/reminder-form/reminder-form';
 import { TaskForm } from 'app/components/task-form/task-form';
+import { ListFormValue } from 'app/models/list';
 import { ReminderFormValue } from 'app/models/reminder';
 import { TaskFormValue } from 'app/models/task';
 
@@ -10,7 +12,7 @@ type CreateOption = 'reminder' | 'task' | 'list' | 'note';
 
 @Component({
   selector: 'app-create-menu',
-  imports: [Icon, ModalBase, ReminderForm, TaskForm],
+  imports: [Icon, ListForm, ModalBase, ReminderForm, TaskForm],
   templateUrl: './create-menu.html',
   styleUrl: './create-menu.css',
 })
@@ -20,6 +22,7 @@ export class CreateMenu {
   voiceClick = output<void>();
   reminderCreate = output<ReminderFormValue>();
   taskCreate = output<TaskFormValue>();
+  listCreate = output<ListFormValue>();
 
   options: { value: CreateOption; label: string; description: string; icon: string }[] = [
     { value: 'reminder', label: 'Recordatorio', description: 'Un aviso puntual: cita, entrega, evento', icon: 'clock' },
@@ -31,6 +34,7 @@ export class CreateMenu {
   text = signal('');
   reminderOpen = signal(false);
   taskOpen = signal(false);
+  listOpen = signal(false);
 
   choose(option: CreateOption) {
     this.open.set(false);
@@ -38,6 +42,8 @@ export class CreateMenu {
       this.reminderOpen.set(true);
     } else if (option === 'task') {
       this.taskOpen.set(true);
+    } else if (option === 'list') {
+      this.listOpen.set(true);
     }
   }
 
