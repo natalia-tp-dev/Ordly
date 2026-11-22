@@ -1,0 +1,35 @@
+<app-modal-base [open]="open()" title="Nueva nota" (closed)="close()">
+  <form class="form" (submit)="$event.preventDefault(); save()">
+    <app-form-field
+      label="Título"
+      placeholder="Ej. Ideas para el proyecto"
+      fieldId="note-title"
+      [required]="true"
+      [(value)]="title"
+    />
+
+    <app-form-field
+      type="select"
+      label="Categoría"
+      placeholder="Seleccionar categoría"
+      fieldId="note-category"
+      [options]="categories()"
+      [(value)]="category"
+    />
+
+    <app-form-field
+      type="textarea"
+      label="Contenido"
+      placeholder="Escribe tu nota aquí..."
+      fieldId="note-content"
+      [(value)]="content"
+    />
+
+    <app-attachment-field (fileChange)="attachment.set($event)" />
+
+    <div class="form__actions">
+      <app-button variant="text" (click)="close()">Cancelar</app-button>
+      <app-button variant="primary" type="submit" [disabled]="!title().trim()">Crear nota</app-button>
+    </div>
+  </form>
+</app-modal-base>
