@@ -1,5 +1,6 @@
 import { Component, computed, input, output, signal } from '@angular/core';
 import { Icon } from 'app/components/icon/icon';
+import { formatFileSize } from 'app/utils/file';
 
 @Component({
   selector: 'app-attachment-field',
@@ -15,13 +16,7 @@ export class AttachmentField {
 
   fileSize = computed(() => {
     const file = this.file();
-    if (!file) {
-      return '';
-    }
-    if (file.size < 1024 * 1024) {
-      return `${Math.max(1, Math.round(file.size / 1024))} KB`;
-    }
-    return `${(file.size / (1024 * 1024)).toFixed(1)} MB`;
+    return file ? formatFileSize(file.size) : '';
   });
 
   select(event: Event) {
