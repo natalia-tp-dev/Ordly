@@ -6,6 +6,8 @@ export interface Task {
   meta?: string;
   priority: TaskPriority;
   completed: boolean;
+  listId?: string;
+  due?: Date;
 }
 
 export interface TaskFormValue {

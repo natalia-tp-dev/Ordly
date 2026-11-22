@@ -4,6 +4,23 @@ export function sameDay(a: Date, b: Date): boolean {
   return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 }
 
+export function atTime(base: Date, dayOffset: number, hour: number, minute = 0): Date {
+  return new Date(base.getFullYear(), base.getMonth(), base.getDate() + dayOffset, hour, minute);
+}
+
+export function parseDateTime(date: string, time: string): Date | undefined {
+  if (!date) {
+    return undefined;
+  }
+  const [year, month, day] = date.split('-').map(Number);
+  const [hour, minute] = time ? time.split(':').map(Number) : [0, 0];
+  return new Date(year, month - 1, day, hour, minute);
+}
+
+export function formatTime(date: Date): string {
+  return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+}
+
 export function startOfWeek(date: Date): Date {
   const result = new Date(date.getFullYear(), date.getMonth(), date.getDate());
   const day = result.getDay();

@@ -4,6 +4,7 @@ import { Logo } from 'app/components/logo/logo';
 import { NavItem } from 'app/components/nav-item/nav-item';
 import { UserBadge } from 'app/components/user-badge/user-badge';
 import { TaskList } from 'app/models/list';
+import { colorVar } from 'app/utils/color';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,15 +14,13 @@ import { TaskList } from 'app/models/list';
 })
 export class Sidebar {
   collapsed = model(false);
-  userName = input('María Paz');
+  userName = input('');
   loggedIn = input(true);
-  agendaCount = input<number>(3);
-  overdueCount = input<number>(2);
-  lists = input<TaskList[]>([
-    { name: 'Personal', color: 'var(--state-success, #10b981)' },
-    { name: 'Universidad', color: 'var(--brand-primary, #3b82f6)' },
-    { name: 'Citas médicas', color: 'var(--state-danger, #ef4444)' },
-  ]);
+  agendaCount = input(0);
+  overdueCount = input(0);
+  lists = input<TaskList[]>([]);
+
+  colorVar = colorVar;
 
   createClick = output<void>();
   voiceClick = output<void>();
