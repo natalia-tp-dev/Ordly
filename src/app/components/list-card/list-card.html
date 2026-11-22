@@ -1,0 +1,19 @@
+<section class="list-card">
+  <header class="list-card__header">
+    <span class="list-card__dot" [style.background-color]="color()"></span>
+    <h2 class="list-card__name">{{ name() }}</h2>
+    <span class="list-card__count">{{ tasks().length }}</span>
+  </header>
+
+  @for (task of tasks(); track task.id) {
+    <app-task-item
+      [title]="task.title"
+      [meta]="task.meta"
+      [priority]="task.priority"
+      [completed]="task.completed"
+      (completedChange)="setCompleted(task.id, $event)"
+    />
+  } @empty {
+    <p class="list-card__empty">No hay tareas en esta lista.</p>
+  }
+</section>
