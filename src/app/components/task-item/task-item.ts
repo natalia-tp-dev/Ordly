@@ -3,6 +3,14 @@ import { Checkbox } from 'app/components/checkbox/checkbox';
 import { Chip, ChipVariant } from 'app/components/chip/chip';
 import { TaskPriority } from 'app/components/task-form/task-form';
 
+export interface Task {
+  id: string;
+  title: string;
+  meta?: string;
+  priority: TaskPriority;
+  completed: boolean;
+}
+
 const PRIORITY_LABELS: Record<TaskPriority, string> = {
   urgent: 'Urgente',
   important: 'Importante',
