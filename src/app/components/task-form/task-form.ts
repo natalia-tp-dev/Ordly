@@ -3,17 +3,7 @@ import { Button } from 'app/components/button/button';
 import { Chip } from 'app/components/chip/chip';
 import { FormField, FormFieldOption } from 'app/components/form-field/form-field';
 import { ModalBase } from 'app/components/modal-base/modal-base';
-
-export type TaskPriority = 'urgent' | 'important' | 'normal';
-
-export interface TaskFormValue {
-  title: string;
-  list: string;
-  date: string;
-  time: string;
-  priority: TaskPriority;
-  notes: string;
-}
+import { TaskFormValue, TaskPriority } from 'app/models/task';
 
 @Component({
   selector: 'app-task-form',

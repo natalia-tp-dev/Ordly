@@ -2,15 +2,7 @@ import { Component, input, model, output, signal } from '@angular/core';
 import { Button } from 'app/components/button/button';
 import { FormField, FormFieldOption } from 'app/components/form-field/form-field';
 import { ModalBase } from 'app/components/modal-base/modal-base';
-
-export interface ReminderFormValue {
-  title: string;
-  date: string;
-  time: string;
-  category: string;
-  place: string;
-  notes: string;
-}
+import { ReminderFormValue } from 'app/models/reminder';
 
 @Component({
   selector: 'app-reminder-form',
