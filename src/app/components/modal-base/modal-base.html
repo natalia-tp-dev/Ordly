@@ -1,9 +1,9 @@
 @if (open()) {
-  <div class="modal__scrim" (click)="onScrimClick($event)">
-    <div class="modal" [style.max-width.px]="width()">
-      <header class="modal__header">
-        <h2 class="modal__title">{{ title() }}</h2>
-        <button type="button" class="modal__close" (click)="closed.emit()">
+  <div class="modal-base__scrim" (click)="onScrimClick($event)">
+    <div class="modal-base" [style.max-width.px]="width()">
+      <header class="modal-base__header">
+        <h2 class="modal-base__title">{{ title() }}</h2>
+        <button type="button" class="modal-base__close" (click)="closed.emit()">
           <app-icon name="x" color="currentColor" />
         </button>
       </header>

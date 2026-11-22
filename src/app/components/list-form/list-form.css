@@ -1,0 +1,77 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form__label {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-weight: 500;
+  font-size: 11.5px;
+  line-height: 16px;
+  color: var(--text-secondary, #64748b);
+}
+
+.form__colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.form__color {
+  box-sizing: border-box;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 13px;
+  cursor: pointer;
+}
+
+.form__color--selected {
+  border-color: var(--text-primary, #1e293b);
+}
+
+.form__color:focus-visible {
+  outline: 2px solid var(--brand-primary, #3b82f6);
+  outline-offset: 2px;
+}
+
+.form__color--blue {
+  background-color: var(--brand-primary, #3b82f6);
+}
+
+.form__color--green {
+  background-color: var(--state-success, #10b981);
+}
+
+.form__color--red {
+  background-color: var(--state-danger, #ef4444);
+}
+
+.form__color--amber {
+  background-color: var(--state-warning, #f59e0b);
+}
+
+.form__color--purple {
+  background-color: var(--accent-purple, #8b5cf6);
+}
+
+.form__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .form__actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+}

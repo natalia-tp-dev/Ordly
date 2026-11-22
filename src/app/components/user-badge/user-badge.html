@@ -1,20 +1,20 @@
-<button type="button" class="badge" [class.badge--collapsed]="collapsed()" (click)="onClick()">
+<button type="button" class="user-badge" [class.user-badge--collapsed]="collapsed()" (click)="onClick()">
   @if (loggedIn()) {
-    <span class="badge__avatar">{{ initials() }}</span>
+    <span class="user-badge__avatar">{{ initials() }}</span>
   } @else {
-    <span class="badge__avatar badge__avatar--guest">
+    <span class="user-badge__avatar user-badge__avatar--guest">
       <app-icon name="user" [size]="15" color="currentColor" />
     </span>
   }
 
   @if (!collapsed()) {
-    <span class="badge__info">
+    <span class="user-badge__info">
       @if (loggedIn()) {
-        <span class="badge__name">{{ name() }}</span>
-        <span class="badge__hint">Ver perfil</span>
+        <span class="user-badge__name">{{ name() }}</span>
+        <span class="user-badge__hint">Ver perfil</span>
       } @else {
-        <span class="badge__name badge__name--login">Iniciar sesión</span>
-        <span class="badge__hint">Crea tu cuenta gratis</span>
+        <span class="user-badge__name user-badge__name--login">Iniciar sesión</span>
+        <span class="user-badge__hint">Crea tu cuenta gratis</span>
       }
     </span>
     <app-icon name="chevron-right" [size]="15" color="currentColor" />
