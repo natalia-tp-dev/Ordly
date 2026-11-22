@@ -10,4 +10,5 @@ export class EventBlock {
   title = input.required<string>();
   detail = input<string>();
   color = input<EventColor>('blue');
+  compact = input(false);
 }

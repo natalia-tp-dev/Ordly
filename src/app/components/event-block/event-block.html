@@ -1,4 +1,4 @@
-<div class="event-block event-block--{{ color() }}">
+<div class="event-block event-block--{{ color() }}" [class.event-block--compact]="compact()">
   <span class="event-block__title">{{ title() }}</span>
   @if (detail()) {
     <span class="event-block__detail">{{ detail() }}</span>

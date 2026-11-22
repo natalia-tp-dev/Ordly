@@ -35,6 +35,17 @@
   opacity: 0.8;
 }
 
+.event-block--compact {
+  padding: 2px 3px;
+}
+
+.event-block--compact .event-block__title {
+  font-size: 10px;
+  line-height: 13px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
 .event-block--blue {
   background-color: var(--surface-active, #eff6ff);
   color: var(--brand-primary, #3b82f6);
