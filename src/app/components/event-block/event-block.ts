@@ -1,6 +1,5 @@
 import { Component, input } from '@angular/core';
-
-export type EventColor = 'blue' | 'green' | 'red' | 'amber' | 'purple';
+import { EventColor } from 'app/models/agenda';
 
 @Component({
   selector: 'app-event-block',

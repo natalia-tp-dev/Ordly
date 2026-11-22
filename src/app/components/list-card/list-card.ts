@@ -1,5 +1,6 @@
 import { Component, input, model } from '@angular/core';
-import { Task, TaskItem } from 'app/components/task-item/task-item';
+import { TaskItem } from 'app/components/task-item/task-item';
+import { Task } from 'app/models/task';
 
 @Component({
   selector: 'app-list-card',
