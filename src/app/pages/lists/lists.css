@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+.lists {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.lists__empty {
+  margin: 0;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 13.5px;
+  line-height: 19px;
+  color: var(--text-tertiary, #94a3b8);
+}
