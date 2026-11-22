@@ -34,9 +34,11 @@
 
 <app-create-menu
   [(open)]="createOpen"
+  [lists]="tasks.listOptions()"
   (taskCreate)="tasks.add($event)"
   (listCreate)="tasks.addList($event)"
   (reminderCreate)="agenda.add($event)"
+  (noteCreate)="notes.add($event)"
 />
 <app-login [(open)]="loginOpen" (login)="auth.login($event)" (registerClick)="registerOpen.set(true)" />
 <app-register [(open)]="registerOpen" (register)="auth.register($event)" (loginClick)="loginOpen.set(true)" />

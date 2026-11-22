@@ -8,6 +8,7 @@ import { Register } from 'app/components/register/register';
 import { Sidebar } from 'app/components/sidebar/sidebar';
 import { AgendaService } from 'app/services/agenda';
 import { AuthService } from 'app/services/auth';
+import { NoteService } from 'app/services/notes';
 import { TaskService } from 'app/services/tasks';
 
 @Component({
@@ -20,6 +21,7 @@ export class App {
   readonly auth = inject(AuthService);
   readonly tasks = inject(TaskService);
   readonly agenda = inject(AgendaService);
+  readonly notes = inject(NoteService);
 
   narrow = signal(false);
   menuOpen = signal(false);
