@@ -1,0 +1,61 @@
+:host {
+  display: block;
+}
+
+.note-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px;
+  border: 0.5px solid var(--border-default, #e2e8f0);
+  border-radius: 12px;
+  background-color: var(--surface-base, #ffffff);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.note-card:hover {
+  border-color: var(--brand-primary-soft, #bfdbfe);
+}
+
+.note-card:focus-visible {
+  outline: 2px solid var(--brand-primary, #3b82f6);
+  outline-offset: 2px;
+}
+
+.note-card__title {
+  font-weight: 500;
+  font-size: 13.5px;
+  line-height: 19px;
+  color: var(--text-primary, #1e293b);
+}
+
+.note-card__excerpt {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 17px;
+  color: var(--text-secondary, #64748b);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+.note-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.note-card__date {
+  margin-left: auto;
+  font-size: 12px;
+  line-height: 17px;
+  color: var(--text-tertiary, #94a3b8);
+  white-space: nowrap;
+}

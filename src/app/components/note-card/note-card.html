@@ -1,0 +1,12 @@
+<button type="button" class="note-card" (click)="open.emit()">
+  <span class="note-card__title">{{ title() }}</span>
+  @if (excerpt()) {
+    <span class="note-card__excerpt">{{ excerpt() }}</span>
+  }
+  <span class="note-card__footer">
+    @if (category(); as label) {
+      <app-chip [label]="label" [variant]="categoryColor()" />
+    }
+    <span class="note-card__date">{{ date() }}</span>
+  </span>
+</button>
